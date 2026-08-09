@@ -28,7 +28,6 @@ const topics = [
     ["Cute", "Scary"],
     ["Useful", "Useless"],
     ["Soft", "Hard"],
-    ["Sweet", "Savory"],
     ["Sweet", "Sour"],
     ["Light", "Heavy"],
     ["Strong", "Weak"],
@@ -44,7 +43,6 @@ const topics = [
     ["Comfortable", "Uncomfortable"],
     ["Common", "Rare"],
     ["High effort", "Low effort"],
-    ["High stress", "Low stress"],
     ["Rich", "Poor"],
     ["Polite", "Rude"],
     ["Fair", "Unfair"],
@@ -60,7 +58,6 @@ const topics = [
     ["Early", "Late"],
     ["Dry", "Wet"],
     ["Fresh", "Stale"],
-    ["Clean job", "Dirty job"],
     ["Good smell", "Bad smell"],
     ["Good music", "Bad music"],
     ["Good superpower", "Bad superpower"],
@@ -68,22 +65,12 @@ const topics = [
     ["Good pet", "Bad pet"],
     ["Good advice", "Bad advice"],
     ["Good idea", "Bad idea"],
-    ["High tech", "Low tech"],
-    ["High risk", "Low risk"],
     ["Early morning", "Late night"],
     ["Indoor", "Outdoor"],
     ["Public", "Private"],
-    ["Fragile", "Unbreakable"],
-    ["Calm", "Chaotic"],
-    ["Mainstream", "Niche"],
-    ["Overpaid", "Underpaid"],
-    ["Overplayed", "Underplayed"],
-    ["Overcooked", "Undercooked"],
     ["Overdressed", "Underdressed"],
     ["Healthy snack", "Unhealthy snack"],
     ["Easy chore", "Hard chore"],
-    ["Easy job", "Hard job"],
-    ["Easy language", "Hard language"],
     ["Easy sport", "Hard sport"],
     ["Useful talent", "Useless talent"],
     ["Useful subject", "Useless subject"],
@@ -106,9 +93,9 @@ const topics = [
     ["Feels good", "Feels bad"],
     ["Looks good", "Looks bad"],
     ["Sounds good", "Sounds bad"],
-    ["Best decade", "Worst decade"],
     ["Best season", "Worst season"],
     ["Best day of the week", "Worst day of the week"],
+    ["Best day of the year", "Worst day of the year"],
     ["Best feeling", "Worst feeling"]
 
 ];
@@ -120,7 +107,6 @@ const topics = [
 
 const extraTopics = [
 
-    ["Day", "Night"],
     ["Big", "Small"],
     ["Fast", "Slow"],
     ["Near", "Far"],
@@ -163,7 +149,6 @@ const extraTopics = [
     ["Good weather", "Bad weather"],
     ["Good smell", "Bad smell"],
     ["Good sound", "Bad sound"],
-    ["Good design", "Bad design"],
     ["Good photo", "Bad photo"],
     ["Good idea", "Bad idea"],
     ["Fun activity", "Boring activity"],
@@ -176,12 +161,9 @@ const extraTopics = [
     ["Good superpower", "Bad superpower"],
     ["Good gift", "Bad gift"],
     ["Good pet", "Bad pet"],
-    ["Good job", "Bad job"],
     ["Good advice", "Bad advice"],
     ["Good choice", "Bad choice"],
     ["Good habit", "Bad habit"],
-    ["Good morning", "Bad morning"],
-    ["Good night", "Bad night"]
 
 ];
 
