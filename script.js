@@ -1,1991 +1,631 @@
 /* =========================================================
-   WAVELENGTH
-   FINAL SCRIPT.JS
+   WAVELENGTH V2 — COMPACT SCRIPT
    ========================================================= */
 
-
-/* =========================================================
-   TOPICS
-   ========================================================= */
-
-const allTopics = [
-
-    ["Hot", "Cold"],
-    ["Healthy", "Unhealthy"],
-    ["Popular", "Unpopular"],
-    ["Good movie", "Bad movie"],
-    ["Easy to cook", "Difficult to cook"],
-    ["Overrated", "Underrated"],
-    ["For kids", "For adults"],
-    ["Legal", "Illegal"],
-    ["Good habit", "Bad habit"],
-    ["Cheap", "Expensive"],
-    ["Safe", "Dangerous"],
-    ["Fast", "Slow"],
-    ["Easy", "Hard"],
-    ["Loud", "Quiet"],
-    ["Clean", "Dirty"],
-    ["Cute", "Scary"],
-    ["Useful", "Useless"],
-    ["Soft", "Hard"],
-    ["Sweet", "Sour"],
-    ["Light", "Heavy"],
-    ["Strong", "Weak"],
-    ["Simple", "Complex"],
-    ["Boring", "Exciting"],
-    ["Bright", "Dark"],
-    ["Smells good", "Smells bad"],
-    ["Small", "Huge"],
-    ["Old", "New"],
-    ["Modern", "Traditional"],
-    ["Fun", "Unfun"],
-    ["High quality", "Low quality"],
-    ["Comfortable", "Uncomfortable"],
-    ["Common", "Rare"],
-    ["High effort", "Low effort"],
-    ["Rich", "Poor"],
-    ["Polite", "Rude"],
-    ["Fair", "Unfair"],
-    ["Important", "Unimportant"],
-    ["Normal", "Weird"],
-    ["Real", "Fake"],
-    ["True", "False"],
-    ["Temporary", "Permanent"],
-    ["Natural", "Artificial"],
-    ["Smooth", "Rough"],
-    ["Short", "Long"],
-    ["Near", "Far"],
-    ["Early", "Late"],
-    ["Dry", "Wet"],
-    ["Fresh", "Stale"],
-    ["Good smell", "Bad smell"],
-    ["Good music", "Bad music"],
-    ["Good superpower", "Bad superpower"],
-    ["Good gift", "Bad gift"],
-    ["Good pet", "Bad pet"],
-    ["Good advice", "Bad advice"],
-    ["Good idea", "Bad idea"],
-    ["Early morning", "Late night"],
-    ["Indoor", "Outdoor"],
-    ["Public", "Private"],
-    ["Overdressed", "Underdressed"],
-    ["Healthy snack", "Unhealthy snack"],
-    ["Easy chore", "Hard chore"],
-    ["Easy sport", "Hard sport"],
-    ["Useful talent", "Useless talent"],
-    ["Useful subject", "Useless subject"],
-    ["Essential item", "Luxury item"],
-    ["Solitary activity", "Social activity"],
-    ["Physical activity", "Mental activity"],
-    ["Urban", "Rural"],
-    ["Modern music", "Old music"],
-    ["Sad", "Happy"],
-    ["Friendly", "Unfriendly"],
-    ["Harmless", "Harmful"],
-    ["Relaxing", "Stressful"],
-    ["Serious", "Playful"],
-    ["Traditional food", "Modern food"],
-    ["Messy", "Neat"],
-    ["Predictable", "Unpredictable"],
-    ["Ethical", "Unethical"],
-    ["Skill-based", "Luck-based"],
-    ["Tastes good", "Tastes bad"],
-    ["Feels good", "Feels bad"],
-    ["Looks good", "Looks bad"],
-    ["Sounds good", "Sounds bad"],
-    ["Best season", "Worst season"],
-    ["Best day of the week", "Worst day of the week"],
-    ["Best day of the year", "Worst day of the year"],
-    ["Best feeling", "Worst feeling"],
-
-    ["Big", "Small"],
-    ["Fast", "Slow"],
-    ["Near", "Far"],
-    ["Hot", "Cold"],
-    ["Young", "Old"],
-    ["Cheap", "Expensive"],
-    ["Easy", "Difficult"],
-    ["Happy", "Sad"],
-    ["Funny", "Serious"],
-    ["Beautiful", "Ugly"],
-    ["Strong", "Weak"],
-    ["Heavy", "Light"],
-    ["Wet", "Dry"],
-    ["Bright", "Dark"],
-    ["Open", "Closed"],
-    ["Full", "Empty"],
-    ["Clean", "Dirty"],
-    ["Safe", "Dangerous"],
-    ["Good", "Bad"],
-    ["Like", "Dislike"],
-    ["Love", "Hate"],
-    ["Useful", "Useless"],
-    ["Quiet", "Noisy"],
-    ["Soft", "Hard"],
-    ["Simple", "Complicated"],
-    ["Old-fashioned", "Modern"],
-    ["Healthy", "Unhealthy"],
-    ["Relaxing", "Stressful"],
-    ["Popular", "Unknown"],
-
-    ["Funny movie", "Serious movie"],
-    ["Good food", "Bad food"],
-    ["Good place", "Bad place"],
-    ["Good friend", "Bad friend"],
-    ["Easy game", "Hard game"],
-    ["Easy subject", "Hard subject"],
-    ["Good phone", "Bad phone"],
-    ["Good app", "Bad app"],
-    ["Good day", "Bad day"],
-    ["Good weather", "Bad weather"],
-    ["Good smell", "Bad smell"],
-    ["Good sound", "Bad sound"],
-    ["Good photo", "Bad photo"],
-    ["Good idea", "Bad idea"],
-    ["Fun activity", "Boring activity"],
-    ["Good holiday", "Bad holiday"],
-    ["Good trip", "Bad trip"],
-    ["Good teacher", "Bad teacher"],
-    ["Good student", "Bad student"],
-    ["Easy decision", "Difficult decision"],
-    ["Useful invention", "Useless invention"],
-    ["Good superpower", "Bad superpower"],
-    ["Good gift", "Bad gift"],
-    ["Good pet", "Bad pet"],
-    ["Good advice", "Bad advice"],
-    ["Good choice", "Bad choice"],
-    ["Good habit", "Bad habit"]
-
+const topics=[
+["Hot","Cold"],["Healthy","Unhealthy"],["Popular","Unpopular"],
+["Good movie","Bad movie"],["Easy to cook","Difficult to cook"],
+["Overrated","Underrated"],["For kids","For adults"],["Legal","Illegal"],
+["Good habit","Bad habit"],["Cheap","Expensive"],["Safe","Dangerous"],
+["Fast","Slow"],["Easy","Hard"],["Loud","Quiet"],["Clean","Dirty"],
+["Cute","Scary"],["Useful","Useless"],["Soft","Hard"],["Sweet","Savory"],
+["Sweet","Sour"],["Light","Heavy"],["Strong","Weak"],["Simple","Complex"],
+["Boring","Exciting"],["Bright","Dark"],["Smells good","Smells bad"],
+["Small","Huge"],["Old","New"],["Modern","Traditional"],["Fun","Unfun"],
+["High quality","Low quality"],["Comfortable","Uncomfortable"],
+["Common","Rare"],["High effort","Low effort"],["High stress","Low stress"],
+["Rich","Poor"],["Polite","Rude"],["Fair","Unfair"],
+["Important","Unimportant"],["Normal","Weird"],["Real","Fake"],
+["True","False"],["Temporary","Permanent"],["Natural","Artificial"],
+["Smooth","Rough"],["Short","Long"],["Near","Far"],["Early","Late"],
+["Dry","Wet"],["Fresh","Stale"],["Clean job","Dirty job"],
+["Good smell","Bad smell"],["Good music","Bad music"],
+["Good superpower","Bad superpower"],["Good gift","Bad gift"],
+["Good pet","Bad pet"],["Good advice","Bad advice"],["Good idea","Bad idea"],
+["High tech","Low tech"],["High risk","Low risk"],
+["Early morning","Late night"],["Indoor","Outdoor"],["Public","Private"],
+["Fragile","Unbreakable"],["Calm","Chaotic"],["Mainstream","Niche"],
+["Overpaid","Underpaid"],["Overplayed","Underplayed"],
+["Overcooked","Undercooked"],["Overdressed","Underdressed"],
+["Healthy snack","Unhealthy snack"],["Easy chore","Hard chore"],
+["Easy job","Hard job"],["Easy language","Hard language"],
+["Easy sport","Hard sport"],["Useful talent","Useless talent"],
+["Useful subject","Useless subject"],["Essential item","Luxury item"],
+["Solitary activity","Social activity"],["Physical activity","Mental activity"],
+["Urban","Rural"],["Modern music","Old music"],["Sad","Happy"],
+["Friendly","Unfriendly"],["Harmless","Harmful"],["Relaxing","Stressful"],
+["Serious","Playful"],["Traditional food","Modern food"],["Messy","Neat"],
+["Predictable","Unpredictable"],["Ethical","Unethical"],
+["Skill-based","Luck-based"],["Tastes good","Tastes bad"],
+["Feels good","Feels bad"],["Looks good","Looks bad"],
+["Sounds good","Sounds bad"],["Best decade","Worst decade"],
+["Best season","Worst season"],
+["Best day of the week","Worst day of the week"],
+["Best feeling","Worst feeling"]
 ];
 
+const extraTopics=[
+["Day","Night"],["Big","Small"],["Fast","Slow"],["Near","Far"],
+["Hot","Cold"],["Young","Old"],["Cheap","Expensive"],["Easy","Difficult"],
+["Happy","Sad"],["Funny","Serious"],["Beautiful","Ugly"],["Strong","Weak"],
+["Heavy","Light"],["Wet","Dry"],["Bright","Dark"],["Open","Closed"],
+["Full","Empty"],["Clean","Dirty"],["Safe","Dangerous"],["Good","Bad"],
+["Like","Dislike"],["Love","Hate"],["Useful","Useless"],["Quiet","Noisy"],
+["Soft","Hard"],["Simple","Complicated"],["Old-fashioned","Modern"],
+["Healthy","Unhealthy"],["Relaxing","Stressful"],["Popular","Unknown"],
+["Funny movie","Serious movie"],["Good food","Bad food"],
+["Good place","Bad place"],["Good friend","Bad friend"],
+["Easy game","Hard game"],["Easy subject","Hard subject"],
+["Good phone","Bad phone"],["Good app","Bad app"],["Good day","Bad day"],
+["Good weather","Bad weather"],["Good smell","Bad smell"],
+["Good sound","Bad sound"],["Good design","Bad design"],
+["Good photo","Bad photo"],["Good idea","Bad idea"],
+["Fun activity","Boring activity"],["Good holiday","Bad holiday"],
+["Good trip","Bad trip"],["Good teacher","Bad teacher"],
+["Good student","Bad student"],["Easy decision","Difficult decision"],
+["Useful invention","Useless invention"],
+["Good superpower","Bad superpower"],["Good gift","Bad gift"],
+["Good pet","Bad pet"],["Good job","Bad job"],["Good advice","Bad advice"],
+["Good choice","Bad choice"],["Good habit","Bad habit"],
+["Good morning","Bad morning"],["Good night","Bad night"]
+];
 
-/* =========================================================
-   GAME STATE
-   ========================================================= */
+const allTopics=[...topics,...extraTopics];
 
-let game = {
-    rounds: 5,
-    currentRound: 1,
-
-    sides: [],
-    currentSideIndex: 0,
-
-    targetAngle: 0,
-    guessAngle: 0,
-
-    topic: null,
-    topicIndex: -1,
-
-    topicHistory: [],
-    targetHistory: [],
-
-    revealed: false,
-    roundFinished: false,
-
-    roundPoints: 0,
-    roundZone: "OUTSIDE"
+let game={
+ rounds:5,currentRound:1,sides:[],currentSideIndex:0,
+ targetAngle:0,guessAngle:0,topic:null,topicIndex:-1,
+ topicHistory:[],targetHistory:[],revealed:false,roundFinished:false
 };
 
-let sideId = 0;
-let draggingNeedle = false;
+let sideId=0,draggingNeedle=false;
+
+document.addEventListener("DOMContentLoaded",()=>showScreen("homeScreen"));
+
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ const e=document.getElementById(id);
+ if(e)e.classList.add("active");
+}
+
+function playGame(){showSetup()}
+
+function showSetup(){
+ showScreen("setupScreen");
+ if(!game.sides.length)game.sides=[createSide(),createSide()];
+ renderSides();selectRounds(5);
+}
+
+function createSide(){
+ return{id:++sideId,players:[""],teamName:"",score:0};
+}
+
+function addSide(){
+ game.sides.push(createSide());renderSides();
+}
+
+function removeSide(i){
+ if(game.sides.length<=2)return alert("You need at least 2 sides.");
+ game.sides.splice(i,1);renderSides();
+}
+
+function changePlayerCount(i,change){
+ const s=game.sides[i];
+ let n=Math.max(1,Math.min(10,s.players.length+change));
+ while(s.players.length<n)s.players.push("");
+ while(s.players.length>n)s.players.pop();
+ if(n===1)s.teamName="";
+ renderSides();
+}
+
+function renderSides(){
+ const c=document.getElementById("sidesContainer");
+ if(!c)return;
+ c.innerHTML="";
+
+ game.sides.forEach((s,i)=>{
+  const card=document.createElement("div");
+  card.className="side-card";
+
+  let players=s.players.map((p,j)=>`
+    <input class="player-input" type="text"
+    placeholder="Player ${j+1} name"
+    value="${escapeHTML(p)}"
+    onchange="updatePlayer(${i},${j},this.value)">
+  `).join("");
+
+  let team=s.players.length>1?`
+    <div class="team-name-label">TEAM NAME</div>
+    <input class="team-name-input" type="text"
+    placeholder="Example: AS"
+    value="${escapeHTML(s.teamName)}"
+    onchange="updateTeamName(${i},this.value)">
+  `:"";
+
+  card.innerHTML=`
+    <div class="side-header">
+      <span class="side-number">SIDE ${i+1}</span>
+      <button class="remove-side" onclick="removeSide(${i})">✕</button>
+    </div>
+    <div class="player-count">
+      <button onclick="changePlayerCount(${i},-1)">−</button>
+      <span>${s.players.length} ${s.players.length===1?"PLAYER":"PLAYERS"}</span>
+      <button onclick="changePlayerCount(${i},1)">+</button>
+    </div>
+    ${team}${players}
+  `;
+  c.appendChild(card);
+ });
+
+ const count=document.getElementById("sideCount");
+ if(count)count.textContent=`${game.sides.length} sides`;
+}
+
+function updatePlayer(i,j,v){game.sides[i].players[j]=v.trim()}
+function updateTeamName(i,v){game.sides[i].teamName=v.trim()}
+
+function selectRounds(n){
+ game.rounds=Math.max(1,Math.min(100,Number(n)));
+ setText("roundDisplay",game.rounds);
+ document.querySelectorAll("[data-round]").forEach(b=>
+  b.classList.toggle("selected",Number(b.dataset.round)===game.rounds)
+ );
+ const c=document.getElementById("customRounds");
+ if(c)c.value="";
+}
+
+function setCustomRounds(){
+ const e=document.getElementById("customRounds");
+ if(!e)return;
+ const n=Number(e.value);
+ if(!n||n<1)return;
+ game.rounds=Math.min(100,Math.floor(n));
+ setText("roundDisplay",game.rounds);
+ document.querySelectorAll("[data-round]").forEach(b=>b.classList.remove("selected"));
+}
+
+function startGame(){
+ if(game.sides.length<2)return alert("Add at least 2 sides.");
+
+ for(const s of game.sides){
+  if(s.players.some(p=>!p.trim()))
+   return alert("Please enter every player name.");
+  if(s.players.length>1&&!s.teamName.trim())
+   return alert("A side with multiple players needs a team name.");
+ }
+
+ game.currentRound=1;
+ game.currentSideIndex=0;
+ game.topicHistory=[];
+ game.targetHistory=[];
+ game.topic=null;
+ game.topicIndex=-1;
+ game.sides.forEach(s=>s.score=0);
+ startRound();
+}
+
+function startRound(){
+ game.revealed=false;
+ game.roundFinished=false;
+ game.guessAngle=0;
+ chooseRandomTopic();
+ chooseRandomTarget();
+
+ const s=game.sides[game.currentSideIndex];
+ updateTurnInformation(s);
+ showScreen("clueScreen");
+ setTimeout(drawClueCanvas,80);
+}
+
+function chooseRandomTopic(){
+ let available=allTopics.map((_,i)=>i)
+  .filter(i=>!game.topicHistory.includes(i));
+
+ if(!available.length){
+  game.topicHistory=[];
+  available=allTopics.map((_,i)=>i);
+ }
+
+ game.topicIndex=available[Math.floor(Math.random()*available.length)];
+ game.topic=allTopics[game.topicIndex];
+ game.topicHistory.push(game.topicIndex);
+}
+
+function chooseRandomTarget(){
+ let n;
+ do{n=Math.floor(Math.random()*161)-80}
+ while(game.targetHistory.includes(n));
+ game.targetHistory.push(n);
+ game.targetAngle=n;
+}
+
+function updateTurnInformation(s){
+ const name=getSideDisplayName(s);
+ setText("clueTeamName",name);
+ setText("cluePlayers",s.players.join(" • "));
+ setText("guessTeamName",name);
+
+ ["clueRound","guessRound"].forEach(id=>setText(id,game.currentRound));
+ ["totalRounds","guessTotal"].forEach(id=>setText(id,game.rounds));
+
+ const [a,b]=game.topic;
+ setText("topicText",`${a}  ↔  ${b}`);
+ ["leftTopic","guessLeftTopic","resultLeftTopic"].forEach(id=>setText(id,a));
+ ["rightTopic","guessRightTopic","resultRightTopic"].forEach(id=>setText(id,b));
+
+ setText("clueRole","CLUE MASTER");
+ setText("guessRole","GUESSER");
+}
+
+function getSideDisplayName(s){
+ return s.players.length===1?s.players[0]:s.teamName;
+}
+
+function setText(id,value){
+ const e=document.getElementById(id);
+ if(e)e.textContent=value;
+}
+
+function escapeHTML(v){
+ return String(v)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
 
 
-/* =========================================================
-   STARTUP
-   ========================================================= */
+/* ================= CANVAS ================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-    initializeGame();
+function setupCanvas(canvas){
+ const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;
+ const w=r.width,h=w*.55;
+ canvas.width=w*d;canvas.height=h*d;
+ const ctx=canvas.getContext("2d");
+ ctx.setTransform(d,0,0,d,0,0);
+ return{ctx,width:w,height:h};
+}
+
+function angleToPoint(cx,cy,r,a){
+ a=(a-90)*Math.PI/180;
+ return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)};
+}
+
+function normalizeAngle(a){
+ while(a>180)a-=360;
+ while(a<-180)a+=360;
+ return a;
+}
+
+function drawWave(canvas,target,needle,showTarget,showNeedle){
+ if(!canvas)return;
+ const {ctx,width,height}=setupCanvas(canvas);
+ ctx.clearRect(0,0,width,height);
+
+ const cx=width/2,cy=height-15;
+ const r=Math.min(width*.46,height*1.55);
+
+ drawBaseWave(ctx,cx,cy,r);
+
+ if(showTarget)drawTargetZones(ctx,cx,cy,r,target);
+ if(showNeedle)drawNeedle(ctx,cx,cy,r,needle);
+
+ drawCenterHub(ctx,cx,cy);
+}
+
+function drawBaseWave(ctx,cx,cy,r){
+ ctx.beginPath();
+ ctx.moveTo(cx-r,cy);
+ ctx.arc(cx,cy,r,Math.PI,2*Math.PI);
+ ctx.closePath();
+ ctx.fillStyle="#AAB5C4";
+ ctx.fill();
+}
+
+function drawTargetZones(ctx,cx,cy,r,target){
+ drawAngleBand(ctx,cx,cy,r,target,0,2.5,"#39D98A");
+ drawAngleBand(ctx,cx,cy,r,target,2.5,7.5,"#FFD34E");
+ drawAngleBand(ctx,cx,cy,r,target,7.5,12.5,"#FF9F43");
+ drawAngleBand(ctx,cx,cy,r,target,12.5,17.5,"#FF5B63");
+}
+
+function drawAngleBand(ctx,cx,cy,r,c,inner,outer,color){
+ drawWedge(ctx,cx,cy,r,c-outer,c-inner,color);
+ drawWedge(ctx,cx,cy,r,c+inner,c+outer,color);
+}
+
+function drawWedge(ctx,cx,cy,r,a1,a2,color){
+ ctx.beginPath();
+ ctx.moveTo(cx,cy);
+ ctx.arc(cx,cy,r,(a1-90)*Math.PI/180,(a2-90)*Math.PI/180);
+ ctx.closePath();
+ ctx.fillStyle=color;
+ ctx.fill();
+}
+
+function drawNeedle(ctx,cx,cy,r,a){
+ const p=angleToPoint(cx,cy,r*.96,a);
+ ctx.beginPath();
+ ctx.moveTo(cx,cy);
+ ctx.lineTo(p.x,p.y);
+ ctx.lineWidth=7;
+ ctx.lineCap="round";
+ ctx.strokeStyle="#FF3F52";
+ ctx.stroke();
+
+ ctx.beginPath();
+ ctx.arc(p.x,p.y,5,0,Math.PI*2);
+ ctx.fillStyle="#FF3F52";
+ ctx.fill();
+}
+
+function drawCenterHub(ctx,cx,cy){
+ ctx.beginPath();
+ ctx.arc(cx,cy,9,0,Math.PI*2);
+ ctx.fillStyle="#FF3F52";
+ ctx.fill();
+
+ ctx.beginPath();
+ ctx.arc(cx,cy,3,0,Math.PI*2);
+ ctx.fillStyle="#FFF";
+ ctx.fill();
+}
+
+
+/* ================= CLUE / GUESS ================= */
+
+function drawClueCanvas(){
+ const c=document.getElementById("waveCanvas");
+ drawWave(c,game.targetAngle,0,true,false);
+}
+
+function hideTarget(){
+ game.revealed=false;
+ game.guessAngle=0;
+ showScreen("guessScreen");
+ setTimeout(()=>{
+  drawGuessCanvas();
+  enableNeedleDragging();
+ },80);
+}
+
+function drawGuessCanvas(){
+ const c=document.getElementById("guessCanvas");
+ drawWave(c,game.targetAngle,game.guessAngle,false,true);
+}
+
+function enableNeedleDragging(){
+ const c=document.getElementById("guessCanvas");
+ if(!c)return;
+
+ c.onpointerdown=e=>{
+  if(game.roundFinished)return;
+  draggingNeedle=true;
+  try{c.setPointerCapture(e.pointerId)}catch(_){}
+  updateNeedleFromPointer(e);
+ };
+
+ c.onpointermove=e=>{
+  if(draggingNeedle)updateNeedleFromPointer(e);
+ };
+
+ c.onpointerup=()=>draggingNeedle=false;
+ c.onpointercancel=()=>draggingNeedle=false;
+}
+
+function updateNeedleFromPointer(e){
+ const c=document.getElementById("guessCanvas");
+ if(!c)return;
+
+ const r=c.getBoundingClientRect();
+ const x=e.clientX-r.left,y=e.clientY-r.top;
+ const cx=r.width/2,cy=r.height-15;
+
+ let a=Math.atan2(x-cx,-(y-cy))*180/Math.PI;
+ a=Math.max(-89,Math.min(89,a));
+
+ game.guessAngle=a;
+ drawGuessCanvas();
+}
+
+
+/* ================= SCORING ================= */
+
+function calculatePoints(target,guess){
+ const d=Math.abs(normalizeAngle(target-guess));
+ if(d<=2.5)return 4;
+ if(d<=7.5)return 3;
+ if(d<=12.5)return 2;
+ if(d<=17.5)return 1;
+ return 0;
+}
+
+function revealTarget(){
+ if(game.roundFinished)return;
+
+ game.roundFinished=true;
+ draggingNeedle=false;
+
+ const points=calculatePoints(game.targetAngle,game.guessAngle);
+ const s=game.sides[game.currentSideIndex];
+ s.score+=points;
+
+ setText("resultTeam",getSideDisplayName(s));
+ setText("pointsEarned",points);
+
+ const messages={
+  4:"🎯 PERFECT HIT!",
+  3:"🔥 AMAZING GUESS!",
+  2:"👍 NICE GUESS!",
+  1:"😅 JUST INSIDE!",
+  0:"💀 OUTSIDE THE TARGET!"
+ };
+
+ setText("resultMessage",messages[points]);
+ renderScores("resultScores");
+ showScreen("resultScreen");
+ setTimeout(drawResultCanvas,80);
+}
+
+function skipQuestion(){
+ if(game.roundFinished)return;
+
+ game.roundFinished=true;
+ const s=game.sides[game.currentSideIndex];
+
+ setText("resultTeam",getSideDisplayName(s));
+ setText("pointsEarned","0");
+ setText("resultMessage","⏭️ QUESTION SKIPPED");
+
+ renderScores("resultScores");
+ showScreen("resultScreen");
+ setTimeout(drawResultCanvas,80);
+}
+
+function drawResultCanvas(){
+ const c=document.getElementById("resultCanvas");
+ drawWave(c,game.targetAngle,game.guessAngle,true,true);
+}
+
+
+/* ================= ROUNDS ================= */
+
+function nextRound(){
+ if(game.currentRound>=game.rounds){
+  showGameOver();
+  return;
+ }
+
+ game.currentRound++;
+ game.currentSideIndex=
+  (game.currentSideIndex+1)%game.sides.length;
+
+ startRound();
+}
+
+
+/* ================= SCOREBOARD ================= */
+
+function renderScores(id){
+ const c=document.getElementById(id);
+ if(!c)return;
+
+ c.innerHTML="";
+
+ [...game.sides]
+ .sort((a,b)=>b.score-a.score)
+ .forEach((s,i)=>{
+  const row=document.createElement("div");
+  row.className="score-row";
+  row.innerHTML=`
+   <span class="score-rank">${i+1}</span>
+   <span class="score-name">${escapeHTML(getSideDisplayName(s))}</span>
+   <span class="score-points">${s.score}</span>
+  `;
+  c.appendChild(row);
+ });
+}
+
+function renderMainScores(){
+ renderScores("gameScores");
+ renderScores("resultScores");
+}
+
+function getWinners(){
+ const high=Math.max(...game.sides.map(s=>s.score));
+ return game.sides.filter(s=>s.score===high);
+}
+
+function getWinnerText(){
+ return getWinners().map(getSideDisplayName).join(" & ");
+}
+
+
+/* ================= GAME OVER ================= */
+
+function showGameOver(){
+ const winners=getWinners(),text=getWinnerText();
+
+ ["winnerName","gameWinner","finalWinner"]
+ .forEach(id=>setText(id,text));
+
+ setText("winnerScore",winners[0].score);
+ setText("gameOverRounds",game.rounds);
+
+ renderScores("finalScores");
+ renderScores("gameOverScores");
+
+ showScreen("gameOverScreen");
+}
+
+function playAgain(){
+ game.currentRound=1;
+ game.currentSideIndex=0;
+ game.topicHistory=[];
+ game.targetHistory=[];
+ game.topic=null;
+ game.topicIndex=-1;
+ game.guessAngle=0;
+ game.revealed=false;
+ game.roundFinished=false;
+ game.sides.forEach(s=>s.score=0);
+ startRound();
+}
+
+function newGame(){
+ game={
+  rounds:5,currentRound:1,sides:[],currentSideIndex:0,
+  targetAngle:0,guessAngle:0,topic:null,topicIndex:-1,
+  topicHistory:[],targetHistory:[],revealed:false,roundFinished:false
+ };
+ sideId=0;
+ draggingNeedle=false;
+ showSetup();
+}
+
+function goHome(){showScreen("homeScreen")}
+
+function backToSetup(){
+ showScreen("setupScreen");
+ renderSides();
+}
+
+
+/* ================= RESIZE ================= */
+
+window.addEventListener("resize",()=>{
+ const active=id=>document.getElementById(id)?.classList.contains("active");
+
+ if(active("clueScreen"))setTimeout(drawClueCanvas,50);
+ if(active("guessScreen"))setTimeout(drawGuessCanvas,50);
+ if(active("resultScreen"))setTimeout(drawResultCanvas,50);
 });
 
-function initializeGame() {
-    showScreen("homeScreen");
+
+/* ================= OPTIONAL SCORE SCREEN ================= */
+
+function showScores(){
+ renderMainScores();
+ if(document.getElementById("scoreScreen"))
+  showScreen("scoreScreen");
+}
+
+function closeScores(){
+ if(game.roundFinished)return showScreen("resultScreen");
+ if(draggingNeedle)return showScreen("guessScreen");
+ showScreen("clueScreen");
 }
 
 
-/* =========================================================
-   SCREEN CONTROL
-   ========================================================= */
-
-function showScreen(id) {
-
-    document.querySelectorAll(".screen").forEach(screen => {
-        screen.classList.remove("active");
-    });
-
-    const screen = document.getElementById(id);
-
-    if (screen) {
-        screen.classList.add("active");
-    }
-}
-
-
-/* =========================================================
-   HOME
-   ========================================================= */
-
-function playGame() {
-    showSetup();
-}
-
-function showSetup() {
-
-    showScreen("setupScreen");
-
-    if (game.sides.length === 0) {
-        game.sides = [
-            createSide(),
-            createSide()
-        ];
-    }
-
-    renderSides();
-
-    if (!game.rounds) {
-        selectRounds(5);
-    }
-}
-
-function goHome() {
-
-    showScreen("homeScreen");
-
-}
-
-
-/* =========================================================
-   SIDES
-   ========================================================= */
-
-function createSide() {
-
-    sideId++;
-
-    return {
-        id: sideId,
-        players: [""],
-        teamName: "",
-        score: 0
-    };
-}
-
-
-function addSide() {
-
-    game.sides.push(createSide());
-
-    renderSides();
-}
-
-
-function removeSide(index) {
-
-    if (game.sides.length <= 2) {
-        alert("You need at least 2 sides.");
-        return;
-    }
-
-    game.sides.splice(index, 1);
-
-    renderSides();
-}
-
-
-function changePlayerCount(index, change) {
-
-    const side = game.sides[index];
-
-    let count =
-        side.players.length + change;
-
-    count = Math.max(
-        1,
-        Math.min(10, count)
-    );
-
-    while (side.players.length < count) {
-        side.players.push("");
-    }
-
-    while (side.players.length > count) {
-        side.players.pop();
-    }
-
-    if (count === 1) {
-        side.teamName = "";
-    }
-
-    renderSides();
-}
-
-
-/* =========================================================
-   RENDER SIDES
-   ========================================================= */
-
-function renderSides() {
-
-    const container =
-        document.getElementById("sidesContainer");
-
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    game.sides.forEach((side, index) => {
-
-        const card =
-            document.createElement("div");
-
-        card.className = "side-card";
-
-        let playersHTML = "";
-
-        side.players.forEach((player, playerIndex) => {
-
-            playersHTML += `
-                <input
-                    class="player-input"
-                    type="text"
-                    placeholder="Player ${playerIndex + 1} name"
-                    value="${escapeHTML(player)}"
-                    onchange="updatePlayer(${index}, ${playerIndex}, this.value)"
-                >
-            `;
-        });
-
-
-        let teamHTML = "";
-
-        if (side.players.length > 1) {
-
-            teamHTML = `
-                <div class="team-name-label">
-                    TEAM NAME
-                </div>
-
-                <input
-                    class="team-name-input"
-                    type="text"
-                    placeholder="Example: AS"
-                    value="${escapeHTML(side.teamName)}"
-                    onchange="updateTeamName(${index}, this.value)"
-                >
-            `;
-        }
-
-
-        card.innerHTML = `
-
-            <div class="side-header">
-
-                <span class="side-number">
-                    SIDE ${index + 1}
-                </span>
-
-                <button
-                    class="remove-side"
-                    onclick="removeSide(${index})"
-                >
-                    ✕
-                </button>
-
-            </div>
-
-            <div class="player-count">
-
-                <button
-                    onclick="changePlayerCount(${index}, -1)"
-                >
-                    −
-                </button>
-
-                <span>
-                    ${side.players.length}
-                    ${side.players.length === 1
-                        ? "PLAYER"
-                        : "PLAYERS"}
-                </span>
-
-                <button
-                    onclick="changePlayerCount(${index}, 1)"
-                >
-                    +
-                </button>
-
-            </div>
-
-            ${teamHTML}
-
-            ${playersHTML}
-
-        `;
-
-        container.appendChild(card);
-
-    });
-
-
-    const count =
-        document.getElementById("sideCount");
-
-    if (count) {
-        count.textContent =
-            `${game.sides.length} sides`;
-    }
-}
-
-
-/* =========================================================
-   UPDATE PLAYER / TEAM
-   ========================================================= */
-
-function updatePlayer(
-    sideIndex,
-    playerIndex,
-    value
-) {
-
-    game.sides[sideIndex]
-        .players[playerIndex] =
-        value.trim();
-}
-
-
-function updateTeamName(
-    sideIndex,
-    value
-) {
-
-    game.sides[sideIndex]
-        .teamName =
-        value.trim();
-}
-
-
-/* =========================================================
-   ROUNDS
-   ========================================================= */
-
-function selectRounds(number) {
-
-    number = Math.max(
-        1,
-        Math.min(100, Number(number))
-    );
-
-    game.rounds = number;
-
-    setText(
-        "roundDisplay",
-        number
-    );
-
-    document
-        .querySelectorAll("[data-round]")
-        .forEach(button => {
-
-            button.classList.toggle(
-                "selected",
-                Number(button.dataset.round) === number
-            );
-
-        });
-
-    const custom =
-        document.getElementById("customRounds");
-
-    if (custom) {
-        custom.value = "";
-    }
-}
-
-
-function setCustomRounds() {
-
-    const input =
-        document.getElementById("customRounds");
-
-    if (!input) return;
-
-    let value = Number(input.value);
-
-    if (!value || value < 1) return;
-
-    value = Math.min(
-        100,
-        Math.floor(value)
-    );
-
-    game.rounds = value;
-
-    setText(
-        "roundDisplay",
-        value
-    );
-
-    document
-        .querySelectorAll("[data-round]")
-        .forEach(button => {
-            button.classList.remove("selected");
-        });
-}
-
-
-/* =========================================================
-   START GAME
-   ========================================================= */
-
-function startGame() {
-
-    if (game.sides.length < 2) {
-        alert("Add at least 2 sides.");
-        return;
-    }
-
-
-    for (const side of game.sides) {
-
-        for (const player of side.players) {
-
-            if (!player.trim()) {
-                alert("Please enter every player name.");
-                return;
-            }
-        }
-
-
-        if (
-            side.players.length > 1 &&
-            !side.teamName.trim()
-        ) {
-
-            alert(
-                "A side with multiple players needs a team name."
-            );
-
-            return;
-        }
-    }
-
-
-    game.currentRound = 1;
-    game.currentSideIndex = 0;
-
-    game.topicHistory = [];
-    game.targetHistory = [];
-
-    game.topic = null;
-    game.topicIndex = -1;
-
-    game.sides.forEach(side => {
-        side.score = 0;
-    });
-
-    startRound();
-}
-
-
-/* =========================================================
-   START ROUND
-   ========================================================= */
-
-function startRound() {
-
-    game.revealed = false;
-    game.roundFinished = false;
-
-    game.guessAngle = 0;
-    game.roundPoints = 0;
-    game.roundZone = "OUTSIDE";
-
-    chooseRandomTopic();
-    chooseRandomTarget();
-
-    const side =
-        game.sides[game.currentSideIndex];
-
-    updateTurnInformation(side);
-
-    showScreen("clueScreen");
-
-    setTimeout(() => {
-        drawClueCanvas();
-    }, 50);
-}
-
-
-/* =========================================================
-   TOPIC
-   ========================================================= */
-
-function chooseRandomTopic() {
-
-    let available = [];
-
-    for (
-        let i = 0;
-        i < allTopics.length;
-        i++
-    ) {
-
-        if (!game.topicHistory.includes(i)) {
-            available.push(i);
-        }
-    }
-
-
-    if (available.length === 0) {
-
-        game.topicHistory = [];
-
-        available =
-            allTopics.map((_, i) => i);
-    }
-
-
-    const index =
-        available[
-            Math.floor(
-                Math.random() *
-                available.length
-            )
-        ];
-
-
-    game.topicIndex = index;
-
-    game.topic =
-        allTopics[index];
-
-    game.topicHistory.push(index);
-}
-
-
-/* =========================================================
-   TARGET
-   ========================================================= */
-
-function chooseRandomTarget() {
-
-    let target;
-
-    do {
-
-        target =
-            Math.floor(
-                Math.random() * 121
-            ) - 60;
-
-    } while (
-        game.targetHistory.includes(target)
-    );
-
-
-    game.targetHistory.push(target);
-
-    game.targetAngle = target;
-}
-
-
-/* =========================================================
-   TURN INFORMATION
-   ========================================================= */
-
-function updateTurnInformation(side) {
-
-    const name =
-        getSideDisplayName(side);
-
-    setText(
-        "clueTeamName",
-        name
-    );
-
-    setText(
-        "cluePlayers",
-        side.players.join(" • ")
-    );
-
-    setText(
-        "guessTeamName",
-        name
-    );
-
-
-    setText(
-        "clueRound",
-        game.currentRound
-    );
-
-    setText(
-        "totalRounds",
-        game.rounds
-    );
-
-    setText(
-        "guessRound",
-        game.currentRound
-    );
-
-    setText(
-        "guessTotal",
-        game.rounds
-    );
-
-
-    const left =
-        game.topic[0];
-
-    const right =
-        game.topic[1];
-
-
-    setText(
-        "topicText",
-        `${left} ↔ ${right}`
-    );
-
-    setText(
-        "leftTopic",
-        left
-    );
-
-    setText(
-        "rightTopic",
-        right
-    );
-
-    setText(
-        "guessLeftTopic",
-        left
-    );
-
-    setText(
-        "guessRightTopic",
-        right
-    );
-
-    setText(
-        "resultLeftTopic",
-        left
-    );
-
-    setText(
-        "resultRightTopic",
-        right
-    );
-}
-
-
-function getSideDisplayName(side) {
-
-    if (side.players.length === 1) {
-        return side.players[0];
-    }
-
-    return side.teamName;
-}
-
-
-/* =========================================================
-   HIDE TARGET
-   ========================================================= */
-
-function hideTarget() {
-
-    showScreen("guessScreen");
-
-    game.guessAngle = 0;
-
-    setTimeout(() => {
-        drawGuessCanvas();
-    }, 50);
-}
-
-
-/* =========================================================
-   SKIP
-   ========================================================= */
-
-function skipRound() {
-
-    game.roundPoints = 0;
-    game.roundZone = "SKIPPED";
-
-    game.roundFinished = true;
-
-    showResult();
-}
-
-
-/* =========================================================
-   REVEAL TARGET
-   ========================================================= */
-
-function revealTarget() {
-
-    if (game.roundFinished) return;
-
-    game.roundFinished = true;
-    game.revealed = true;
-
-    const difference =
-        Math.abs(
-            game.guessAngle -
-            game.targetAngle
-        );
-
-
-    /*
-       SCORING
-
-       0 - 3° GREEN = 3
-       3 - 6° YELLOW = 2
-       6 - 9° ORANGE = 1
-       9 - 12° RED = 0
-
-       Outside 12° = 0
-    */
-
-    if (difference <= 3) {
-
-        game.roundPoints = 3;
-        game.roundZone = "GREEN";
-
-    } else if (difference <= 6) {
-
-        game.roundPoints = 2;
-        game.roundZone = "YELLOW";
-
-    } else if (difference <= 9) {
-
-        game.roundPoints = 1;
-        game.roundZone = "ORANGE";
-
-    } else if (difference <= 12) {
-
-        game.roundPoints = 0;
-        game.roundZone = "RED";
-
-    } else {
-
-        game.roundPoints = 0;
-        game.roundZone = "OUTSIDE";
-    }
-
-
-    game.sides[
-        game.currentSideIndex
-    ].score += game.roundPoints;
-
-
-    showResult();
-}
-
-
-/* =========================================================
-   RESULT
-   ========================================================= */
-
-function showResult() {
-
-    const side =
-        game.sides[game.currentSideIndex];
-
-    setText(
-        "resultTeam",
-        getSideDisplayName(side)
-    );
-
-    setText(
-        "pointsEarned",
-        game.roundPoints
-    );
-
-
-    let message = "";
-
-    if (game.roundZone === "GREEN") {
-
-        message =
-            "🟢 PERFECT! Exactly in the green zone!";
-
-    } else if (game.roundZone === "YELLOW") {
-
-        message =
-            "🟡 Great guess! You landed in yellow.";
-
-    } else if (game.roundZone === "ORANGE") {
-
-        message =
-            "🟠 Close! You landed in orange.";
-
-    } else if (game.roundZone === "RED") {
-
-        message =
-            "🔴 You were close, but missed the scoring zones.";
-
-    } else if (game.roundZone === "SKIPPED") {
-
-        message =
-            "⏭️ Round skipped. No points.";
-
-    } else {
-
-        message =
-            "⚫ Outside the target. No points.";
-    }
-
-
-    /*
-       Show round scoreboard
-       directly on result screen.
-    */
-
-    let roundBoard =
-        "<strong>ROUND SCOREBOARD</strong><br><br>";
-
-    game.sides.forEach((s, index) => {
-
-        const isCurrent =
-            index === game.currentSideIndex;
-
-        roundBoard += `
-            <div style="
-                display:flex;
-                justify-content:space-between;
-                margin:5px 0;
-                font-weight:${isCurrent ? "900" : "700"};
-            ">
-                <span>
-                    ${escapeHTML(
-                        getSideDisplayName(s)
-                    )}
-                </span>
-
-                <span>
-                    ${s.score}
-                </span>
-            </div>
-        `;
-    });
-
-
-    setText(
-        "resultMessage",
-        message
-    );
-
-
-    const messageElement =
-        document.getElementById("resultMessage");
-
-    if (messageElement) {
-
-        messageElement.innerHTML =
-            `${message}<br><br>${roundBoard}`;
-    }
-
-
-    showScreen("resultScreen");
-
-
-    setTimeout(() => {
-
-        drawResultCanvas();
-
-    }, 50);
-}
-/* =========================================================
-   NEXT ROUND
-   ========================================================= */
-
-function nextRound() {
-
-    if (
-        game.currentRound >=
-        game.rounds
-    ) {
-
-        showGameOver();
-
-        return;
-    }
-
-
-    game.currentRound++;
-
-    game.currentSideIndex++;
-
-    if (
-        game.currentSideIndex >=
-        game.sides.length
-    ) {
-
-        game.currentSideIndex = 0;
-    }
-
-
-    startRound();
-}
-
-
-/* =========================================================
-   GAME OVER
-   ========================================================= */
-
-function showGameOver() {
-
-    let winner =
-        game.sides[0];
-
-    game.sides.forEach(side => {
-
-        if (side.score > winner.score) {
-            winner = side;
-        }
-    });
-
-
-    setText(
-        "winnerName",
-        getSideDisplayName(winner)
-    );
-
-    setText(
-        "winnerScore",
-        winner.score
-    );
-
-
-    /*
-       Sort a copy only for display.
-       Original side order stays unchanged.
-    */
-
-    const ranking =
-        [...game.sides].sort(
-            (a, b) =>
-                b.score - a.score
-        );
-
-
-    const list =
-        document.getElementById(
-            "finalScoreList"
-        );
-
-
-    if (!list) return;
-
-
-    list.innerHTML = "";
-
-
-    ranking.forEach((side, index) => {
-
-        const row =
-            document.createElement("div");
-
-        row.className =
-            "final-score-row";
-
-
-        let medal = "";
-
-        if (index === 0) medal = "👑 ";
-        else if (index === 1) medal = "🥈 ";
-        else if (index === 2) medal = "🥉 ";
-
-
-        row.innerHTML = `
-            <span>
-                ${medal}${escapeHTML(
-                    getSideDisplayName(side)
-                )}
-            </span>
-
-            <strong>
-                ${side.score} pts
-            </strong>
-        `;
-
-
-        list.appendChild(row);
-    });
-
-
-    showScreen("gameOverScreen");
-}
-
-
-/* =========================================================
-   PLAY AGAIN
-   ========================================================= */
-
-function restartGame() {
-
-    /*
-       IMPORTANT:
-       Keep the same players and sides.
-       Only reset scores and game progress.
-    */
-
-    game.currentRound = 1;
-    game.currentSideIndex = 0;
-
-    game.topicHistory = [];
-    game.targetHistory = [];
-
-    game.topic = null;
-    game.topicIndex = -1;
-
-    game.targetAngle = 0;
-    game.guessAngle = 0;
-
-    game.revealed = false;
-    game.roundFinished = false;
-
-    game.roundPoints = 0;
-    game.roundZone = "OUTSIDE";
-
-
-    game.sides.forEach(side => {
-        side.score = 0;
-    });
-
-
-    startRound();
-}
-
-
-/* =========================================================
-   CLUE CANVAS
-   ========================================================= */
-
-function drawClueCanvas() {
-
-    const canvas =
-        document.getElementById(
-            "waveCanvas"
-        );
-
-    if (!canvas) return;
-
-
-    setupCanvas(canvas);
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    const size =
-        canvas.width;
-
-    const cx =
-        size / 2;
-
-    const cy =
-        size * 0.92;
-
-    const radius =
-        size * 0.43;
-
-
-    drawBaseArc(
-        ctx,
-        cx,
-        cy,
-        radius
-    );
-
-
-    /*
-       TARGET ZONES
-
-       Equal intervals:
-
-       GREEN = 0 - 3°
-       YELLOW = 3 - 6°
-       ORANGE = 6 - 9°
-       RED = 9 - 12°
-
-       Each zone is symmetrical
-       around targetAngle.
-    */
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        0,
-        3,
-        "#39D98A"
-    );
-
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        3,
-        6,
-        "#FFD84D"
-    );
-
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        6,
-        9,
-        "#FF9F43"
-    );
-
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        9,
-        12,
-        "#FF5C65"
-    );
-
-
-    /*
-       Target centre marker
-    */
-
-    drawNeedle(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        "#ff1744"
-    );
-}
-
-
-/* =========================================================
-   GUESS CANVAS
-   ========================================================= */
-
-function drawGuessCanvas() {
-
-    const canvas =
-        document.getElementById(
-            "guessCanvas"
-        );
-
-    if (!canvas) return;
-
-
-    setupCanvas(canvas);
-
-    const ctx =
-        canvas.getContext("2d");
-
-    const size =
-        canvas.width;
-
-    const cx =
-        size / 2;
-
-    const cy =
-        size * 0.92;
-
-    const radius =
-        size * 0.43;
-
-
-    drawBaseArc(
-        ctx,
-        cx,
-        cy,
-        radius
-    );
-
-
-    /*
-       Guess screen hides target.
-       Only the guess needle is visible.
-    */
-
-    drawNeedle(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.guessAngle,
-        "#e53935"
-    );
-}
-/* =========================================================
-   RESULT CANVAS
-   ========================================================= */
-
-function drawResultCanvas() {
-
-    const canvas =
-        document.getElementById(
-            "resultCanvas"
-        );
-
-    if (!canvas) return;
-
-
-    setupCanvas(canvas);
-
-    const ctx =
-        canvas.getContext("2d");
-
-    const size =
-        canvas.width;
-
-    const cx =
-        size / 2;
-
-    const cy =
-        size * 0.92;
-
-    const radius =
-        size * 0.43;
-
-
-    drawBaseArc(
-        ctx,
-        cx,
-        cy,
-        radius
-    );
-
-
-    /*
-       Draw all target zones again.
-    */
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        0,
-        3,
-        "#39D98A"
-    );
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        3,
-        6,
-        "#FFD84D"
-    );
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        6,
-        9,
-        "#FF9F43"
-    );
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        9,
-        12,
-        "#FF5C65"
-    );
-
-
-    /*
-       Target
-    */
-
-    drawNeedle(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.targetAngle,
-        "#e53935"
-    );
-
-
-    /*
-       Guess needle
-    */
-
-    drawNeedle(
-        ctx,
-        cx,
-        cy,
-        radius,
-        game.guessAngle,
-        "#222222"
-    );
-}
-
-
-/* =========================================================
-   CANVAS SETUP
-   ========================================================= */
-
-function setupCanvas(canvas) {
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-    const width =
-        Math.max(
-            300,
-            Math.floor(rect.width)
-        );
-
-    const height =
-        Math.floor(width * 0.55);
-
-    const dpr =
-        window.devicePixelRatio || 1;
-
-
-    canvas.width =
-        width * dpr;
-
-    canvas.height =
-        height * dpr;
-
-
-    canvas.style.height =
-        height + "px";
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-    ctx.setTransform(
-        dpr,
-        0,
-        0,
-        dpr,
-        0,
-        0
-    );
-
-
-    /*
-       After scaling, use CSS-sized
-       coordinates.
-    */
-
-    canvas._displayWidth = width;
-    canvas._displayHeight = height;
-}
-
-
-/* =========================================================
-   BASE ARC
-   ========================================================= */
-
-function drawBaseArc(
-    ctx,
-    cx,
-    cy,
-    radius
-) {
-
-    ctx.beginPath();
-
-    ctx.arc(
-        cx,
-        cy,
-        radius,
-        Math.PI,
-        2 * Math.PI
-    );
-
-    ctx.lineTo(
-        cx,
-        cy
-    );
-
-    ctx.closePath();
-
-    ctx.fillStyle =
-        "#e4e8f0";
-
-    ctx.fill();
-
-
-    /*
-       Outer border
-    */
-
-    ctx.beginPath();
-
-    ctx.arc(
-        cx,
-        cy,
-        radius,
-        Math.PI,
-        2 * Math.PI
-    );
-
-    ctx.strokeStyle =
-        "#d1d7e2";
-
-    ctx.lineWidth = 2;
-
-    ctx.stroke();
-}
-
-
-/* =========================================================
-   ANGLE BAND
-   ========================================================= */
-
-function drawAngleBand(
-    ctx,
-    cx,
-    cy,
-    radius,
-    centerAngle,
-    innerAngle,
-    outerAngle,
-    color
-) {
-
-    const leftOuter =
-        centerAngle - outerAngle;
-
-    const rightOuter =
-        centerAngle + outerAngle;
-
-    const leftInner =
-        centerAngle - innerAngle;
-
-    const rightInner =
-        centerAngle + innerAngle;
-
-
-    drawWedge(
-        ctx,
-        cx,
-        cy,
-        radius,
-        leftOuter,
-        leftInner,
-        color
-    );
-
-
-    drawWedge(
-        ctx,
-        cx,
-        cy,
-        radius,
-        rightInner,
-        rightOuter,
-        color
-    );
-}
-
-
-/* =========================================================
-   WEDGE
-   ========================================================= */
-
-function drawWedge(
-    ctx,
-    cx,
-    cy,
-    radius,
-    startDegree,
-    endDegree,
-    color
-) {
-
-    const start =
-        degreeToCanvasAngle(
-            startDegree
-        );
-
-    const end =
-        degreeToCanvasAngle(
-            endDegree
-        );
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        cx,
-        cy
-    );
-
-    ctx.arc(
-        cx,
-        cy,
-        radius,
-        start,
-        end
-    );
-
-    ctx.closePath();
-
-    ctx.fillStyle =
-        color;
-
-    ctx.fill();
-}
-
-
-/* =========================================================
-   DEGREE → CANVAS ANGLE
-   ========================================================= */
-
-function degreeToCanvasAngle(degree) {
-
-    /*
-       0° = straight up
-       negative = left
-       positive = right
-    */
-
-    return (
-        -Math.PI / 2 +
-        degree *
-        Math.PI /
-        180
-    );
-}
-
-
-/* =========================================================
-   NEEDLE
-   ========================================================= */
-
-function drawNeedle(
-    ctx,
-    cx,
-    cy,
-    radius,
-    angle,
-    color
-) {
-
-    const radians =
-        degreeToCanvasAngle(angle);
-
-
-    const needleLength =
-        radius * 0.94;
-
-
-    const x =
-        cx +
-        Math.cos(radians) *
-        needleLength;
-
-    const y =
-        cy +
-        Math.sin(radians) *
-        needleLength;
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        cx,
-        cy
-    );
-
-    ctx.lineTo(
-        x,
-        y
-    );
-
-    ctx.strokeStyle =
-        color;
-
-    ctx.lineWidth = 6;
-
-    ctx.lineCap =
-        "round";
-
-    ctx.stroke();
-
-
-    /*
-       Centre circle
-    */
-
-    ctx.beginPath();
-
-    ctx.arc(
-        cx,
-        cy,
-        9,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fillStyle =
-        color;
-
-    ctx.fill();
-}
-
-
-/* =========================================================
-   GUESS NEEDLE DRAGGING
-   ========================================================= */
-
-function getGuessAngle(event) {
-
-    const canvas =
-        document.getElementById(
-            "guessCanvas"
-        );
-
-    if (!canvas) return 0;
-
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-    const x =
-        event.clientX -
-        rect.left;
-
-    const y =
-        event.clientY -
-        rect.top;
-
-
-    const cx =
-        rect.width / 2;
-
-    const cy =
-        rect.height * 0.92;
-
-
-    let angle =
-        Math.atan2(
-            y - cy,
-            x - cx
-        ) *
-        180 /
-        Math.PI;
-
-
-    /*
-       Convert canvas angle into
-       our Wavelength angle system.
-    */
-
-    angle += 90;
-
-
-    /*
-       Keep needle inside semicircle.
-    */
-
-    angle =
-        Math.max(
-            -60,
-            Math.min(60, angle)
-        );
-
-
-    return angle;
-}
-
-
-function updateGuess(event) {
-
-    if (!draggingNeedle) return;
-
-    game.guessAngle =
-        getGuessAngle(event);
-
-    drawGuessCanvas();
-}
-/* =========================================================
-   POINTER EVENTS
-   ========================================================= */
-
-document.addEventListener(
-    "pointerdown",
-    event => {
-
-        const canvas =
-            document.getElementById(
-                "guessCanvas"
-            );
-
-        if (!canvas) return;
-
-        if (
-            !document
-                .getElementById(
-                    "guessScreen"
-                )
-                .classList.contains("active")
-        ) {
-            return;
-        }
-
-
-        draggingNeedle = true;
-
-        canvas.setPointerCapture?.(
-            event.pointerId
-        );
-
-        game.guessAngle =
-            getGuessAngle(event);
-
-        drawGuessCanvas();
-    }
-);
-
-
-document.addEventListener(
-    "pointermove",
-    event => {
-
-        updateGuess(event);
-    }
-);
-
-
-document.addEventListener(
-    "pointerup",
-    () => {
-
-        draggingNeedle = false;
-    }
-);
-
-
-/* =========================================================
-   RESIZE
-   ========================================================= */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        const clue =
-            document.getElementById(
-                "clueScreen"
-            );
-
-        const guess =
-            document.getElementById(
-                "guessScreen"
-            );
-
-        const result =
-            document.getElementById(
-                "resultScreen"
-            );
-
-
-        if (
-            clue &&
-            clue.classList.contains("active")
-        ) {
-            drawClueCanvas();
-        }
-
-        if (
-            guess &&
-            guess.classList.contains("active")
-        ) {
-            drawGuessCanvas();
-        }
-
-        if (
-            result &&
-            result.classList.contains("active")
-        ) {
-            drawResultCanvas();
-        }
-    }
-);
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
-function setText(
-    id,
-    value
-) {
-
-    const element =
-        document.getElementById(id);
-
-    if (element) {
-        element.textContent =
-            value;
-    }
-}
-
-
-function escapeHTML(value) {
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-}
+/* Prevent accidental Enter submission */
+document.addEventListener("keydown",e=>{
+ if(e.key==="Enter"&&e.target.matches("input"))
+  e.preventDefault();
+});
+
+/* Prevent page scrolling while moving the needle */
+document.addEventListener("touchmove",e=>{
+ if(draggingNeedle&&e.target.closest("#guessCanvas"))
+  e.preventDefault();
+},{passive:false});
