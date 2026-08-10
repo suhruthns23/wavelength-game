@@ -1,3049 +1,857 @@
 /* =========================================================
-   WAVELENGTH V2
-   SCRIPT.JS — PART 1 OF 4
+   WAVELENGTH — FINAL SCRIPT
    ========================================================= */
 
-
-/* =========================================================
-   TOPICS
-   ========================================================= */
+/* ================= TOPICS ================= */
 
 const topics = [
+    ["Hot","Cold"],
+    ["Healthy","Unhealthy"],
+    ["Popular","Unpopular"],
+    ["Good movie","Bad movie"],
+    ["Easy to cook","Difficult to cook"],
+    ["Overrated","Underrated"],
+    ["For kids","For adults"],
+    ["Legal","Illegal"],
+    ["Good habit","Bad habit"],
+    ["Cheap","Expensive"],
+    ["Safe","Dangerous"],
+    ["Fast","Slow"],
+    ["Easy","Hard"],
+    ["Loud","Quiet"],
+    ["Clean","Dirty"],
+    ["Cute","Scary"],
+    ["Useful","Useless"],
+    ["Soft","Hard"],
+    ["Sweet","Sour"],
+    ["Light","Heavy"],
+    ["Strong","Weak"],
+    ["Simple","Complex"],
+    ["Boring","Exciting"],
+    ["Bright","Dark"],
+    ["Smells good","Smells bad"],
+    ["Small","Huge"],
+    ["Old","New"],
+    ["Modern","Traditional"],
+    ["Fun","Unfun"],
+    ["High quality","Low quality"],
+    ["Comfortable","Uncomfortable"],
+    ["Common","Rare"],
+    ["High effort","Low effort"],
+    ["Rich","Poor"],
+    ["Polite","Rude"],
+    ["Fair","Unfair"],
+    ["Important","Unimportant"],
+    ["Normal","Weird"],
+    ["Real","Fake"],
+    ["True","False"],
+    ["Temporary","Permanent"],
+    ["Natural","Artificial"],
+    ["Smooth","Rough"],
+    ["Short","Long"],
+    ["Near","Far"],
+    ["Early","Late"],
+    ["Dry","Wet"],
+    ["Fresh","Stale"],
+    ["Good smell","Bad smell"],
+    ["Good music","Bad music"],
+    ["Good superpower","Bad superpower"],
+    ["Good gift","Bad gift"],
+    ["Good pet","Bad pet"],
+    ["Good advice","Bad advice"],
+    ["Good idea","Bad idea"],
+    ["Early morning","Late night"],
+    ["Indoor","Outdoor"],
+    ["Public","Private"],
+    ["Overdressed","Underdressed"],
+    ["Healthy snack","Unhealthy snack"],
+    ["Easy chore","Hard chore"],
+    ["Easy sport","Hard sport"],
+    ["Useful talent","Useless talent"],
+    ["Useful subject","Useless subject"],
+    ["Essential item","Luxury item"],
+    ["Solitary activity","Social activity"],
+    ["Physical activity","Mental activity"],
+    ["Urban","Rural"],
+    ["Modern music","Old music"],
+    ["Sad","Happy"],
+    ["Friendly","Unfriendly"],
+    ["Harmless","Harmful"],
+    ["Relaxing","Stressful"],
+    ["Serious","Playful"],
+    ["Traditional food","Modern food"],
+    ["Messy","Neat"],
+    ["Predictable","Unpredictable"],
+    ["Ethical","Unethical"],
+    ["Skill-based","Luck-based"],
+    ["Tastes good","Tastes bad"],
+    ["Feels good","Feels bad"],
+    ["Looks good","Looks bad"],
+    ["Sounds good","Sounds bad"],
+    ["Best season","Worst season"],
+    ["Best day of the week","Worst day of the week"],
+    ["Best day of the year","Worst day of the year"],
+    ["Best feeling","Worst feeling"],
 
-    ["Hot", "Cold"],
-    ["Healthy", "Unhealthy"],
-    ["Popular", "Unpopular"],
-    ["Good movie", "Bad movie"],
-    ["Easy to cook", "Difficult to cook"],
-    ["Overrated", "Underrated"],
-    ["For kids", "For adults"],
-    ["Legal", "Illegal"],
-    ["Good habit", "Bad habit"],
-    ["Cheap", "Expensive"],
-    ["Safe", "Dangerous"],
-    ["Fast", "Slow"],
-    ["Easy", "Hard"],
-    ["Loud", "Quiet"],
-    ["Clean", "Dirty"],
-    ["Cute", "Scary"],
-    ["Useful", "Useless"],
-    ["Soft", "Hard"],
-    ["Sweet", "Sour"],
-    ["Light", "Heavy"],
-    ["Strong", "Weak"],
-    ["Simple", "Complex"],
-    ["Boring", "Exciting"],
-    ["Bright", "Dark"],
-    ["Smells good", "Smells bad"],
-    ["Small", "Huge"],
-    ["Old", "New"],
-    ["Modern", "Traditional"],
-    ["Fun", "Unfun"],
-    ["High quality", "Low quality"],
-    ["Comfortable", "Uncomfortable"],
-    ["Common", "Rare"],
-    ["High effort", "Low effort"],
-    ["Rich", "Poor"],
-    ["Polite", "Rude"],
-    ["Fair", "Unfair"],
-    ["Important", "Unimportant"],
-    ["Normal", "Weird"],
-    ["Real", "Fake"],
-    ["True", "False"],
-    ["Temporary", "Permanent"],
-    ["Natural", "Artificial"],
-    ["Smooth", "Rough"],
-    ["Short", "Long"],
-    ["Near", "Far"],
-    ["Early", "Late"],
-    ["Dry", "Wet"],
-    ["Fresh", "Stale"],
-    ["Good smell", "Bad smell"],
-    ["Good music", "Bad music"],
-    ["Good superpower", "Bad superpower"],
-    ["Good gift", "Bad gift"],
-    ["Good pet", "Bad pet"],
-    ["Good advice", "Bad advice"],
-    ["Good idea", "Bad idea"],
-    ["Early morning", "Late night"],
-    ["Indoor", "Outdoor"],
-    ["Public", "Private"],
-    ["Overdressed", "Underdressed"],
-    ["Healthy snack", "Unhealthy snack"],
-    ["Easy chore", "Hard chore"],
-    ["Easy sport", "Hard sport"],
-    ["Useful talent", "Useless talent"],
-    ["Useful subject", "Useless subject"],
-    ["Essential item", "Luxury item"],
-    ["Solitary activity", "Social activity"],
-    ["Physical activity", "Mental activity"],
-    ["Urban", "Rural"],
-    ["Modern music", "Old music"],
-    ["Sad", "Happy"],
-    ["Friendly", "Unfriendly"],
-    ["Harmless", "Harmful"],
-    ["Relaxing", "Stressful"],
-    ["Serious", "Playful"],
-    ["Traditional food", "Modern food"],
-    ["Messy", "Neat"],
-    ["Predictable", "Unpredictable"],
-    ["Ethical", "Unethical"],
-    ["Skill-based", "Luck-based"],
-    ["Tastes good", "Tastes bad"],
-    ["Feels good", "Feels bad"],
-    ["Looks good", "Looks bad"],
-    ["Sounds good", "Sounds bad"],
-    ["Best season", "Worst season"],
-    ["Best day of the week", "Worst day of the week"],
-    ["Best day of the year", "Worst day of the year"],
-    ["Best feeling", "Worst feeling"]
-
+    /* EXTRA EASY TOPICS */
+    ["Big","Small"],
+    ["Fast","Slow"],
+    ["Near","Far"],
+    ["Hot","Cold"],
+    ["Young","Old"],
+    ["Cheap","Expensive"],
+    ["Easy","Difficult"],
+    ["Happy","Sad"],
+    ["Funny","Serious"],
+    ["Beautiful","Ugly"],
+    ["Strong","Weak"],
+    ["Heavy","Light"],
+    ["Wet","Dry"],
+    ["Bright","Dark"],
+    ["Open","Closed"],
+    ["Full","Empty"],
+    ["Clean","Dirty"],
+    ["Safe","Dangerous"],
+    ["Good","Bad"],
+    ["Like","Dislike"],
+    ["Love","Hate"],
+    ["Useful","Useless"],
+    ["Quiet","Noisy"],
+    ["Soft","Hard"],
+    ["Simple","Complicated"],
+    ["Old-fashioned","Modern"],
+    ["Healthy","Unhealthy"],
+    ["Relaxing","Stressful"],
+    ["Popular","Unknown"],
+    ["Funny movie","Serious movie"],
+    ["Good food","Bad food"],
+    ["Good place","Bad place"],
+    ["Good friend","Bad friend"],
+    ["Easy game","Hard game"],
+    ["Easy subject","Hard subject"],
+    ["Good phone","Bad phone"],
+    ["Good app","Bad app"],
+    ["Good day","Bad day"],
+    ["Good weather","Bad weather"],
+    ["Good smell","Bad smell"],
+    ["Good sound","Bad sound"],
+    ["Good photo","Bad photo"],
+    ["Good idea","Bad idea"],
+    ["Fun activity","Boring activity"],
+    ["Good holiday","Bad holiday"],
+    ["Good trip","Bad trip"],
+    ["Good teacher","Bad teacher"],
+    ["Good student","Bad student"],
+    ["Easy decision","Difficult decision"],
+    ["Useful invention","Useless invention"],
+    ["Good superpower","Bad superpower"],
+    ["Good gift","Bad gift"],
+    ["Good pet","Bad pet"],
+    ["Good advice","Bad advice"],
+    ["Good choice","Bad choice"],
+    ["Good habit","Bad habit"]
 ];
 
 
-/* =========================================================
-   EXTRA EASY TOPICS
-   ========================================================= */
-
-const extraTopics = [
-
-    ["Big", "Small"],
-    ["Fast", "Slow"],
-    ["Near", "Far"],
-    ["Hot", "Cold"],
-    ["Young", "Old"],
-    ["Cheap", "Expensive"],
-    ["Easy", "Difficult"],
-    ["Happy", "Sad"],
-    ["Funny", "Serious"],
-    ["Beautiful", "Ugly"],
-    ["Strong", "Weak"],
-    ["Heavy", "Light"],
-    ["Wet", "Dry"],
-    ["Bright", "Dark"],
-    ["Open", "Closed"],
-    ["Full", "Empty"],
-    ["Clean", "Dirty"],
-    ["Safe", "Dangerous"],
-    ["Good", "Bad"],
-    ["Like", "Dislike"],
-    ["Love", "Hate"],
-    ["Useful", "Useless"],
-    ["Quiet", "Noisy"],
-    ["Soft", "Hard"],
-    ["Simple", "Complicated"],
-    ["Old-fashioned", "Modern"],
-    ["Healthy", "Unhealthy"],
-    ["Relaxing", "Stressful"],
-    ["Popular", "Unknown"],
-
-    ["Funny movie", "Serious movie"],
-    ["Good food", "Bad food"],
-    ["Good place", "Bad place"],
-    ["Good friend", "Bad friend"],
-    ["Easy game", "Hard game"],
-    ["Easy subject", "Hard subject"],
-    ["Good phone", "Bad phone"],
-    ["Good app", "Bad app"],
-    ["Good day", "Bad day"],
-    ["Good weather", "Bad weather"],
-    ["Good smell", "Bad smell"],
-    ["Good sound", "Bad sound"],
-    ["Good photo", "Bad photo"],
-    ["Good idea", "Bad idea"],
-    ["Fun activity", "Boring activity"],
-    ["Good holiday", "Bad holiday"],
-    ["Good trip", "Bad trip"],
-    ["Good teacher", "Bad teacher"],
-    ["Good student", "Bad student"],
-    ["Easy decision", "Difficult decision"],
-    ["Useful invention", "Useless invention"],
-    ["Good superpower", "Bad superpower"],
-    ["Good gift", "Bad gift"],
-    ["Good pet", "Bad pet"],
-    ["Good advice", "Bad advice"],
-    ["Good choice", "Bad choice"],
-    ["Good habit", "Bad habit"],
-
-];
-
-
-const allTopics = [
-    ...topics,
-    ...extraTopics
-];
-
-
-/* =========================================================
-   GAME STATE
-   ========================================================= */
+/* ================= GAME STATE ================= */
 
 let game = {
-
     rounds: 5,
-
     currentRound: 1,
-
     sides: [],
-
     currentSideIndex: 0,
-
     targetAngle: 0,
-
     guessAngle: 0,
-
     topic: null,
-
-    topicIndex: -1,
-
     topicHistory: [],
-
     targetHistory: [],
-
-    revealed: false,
-
     roundFinished: false
-
 };
 
-
 let sideId = 0;
-
 let draggingNeedle = false;
 
 
-/* =========================================================
-   STARTUP
-   ========================================================= */
+/* ================= STARTUP ================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    initializeGame();
-
+document.addEventListener("DOMContentLoaded", () => {
+    showScreen("homeScreen");
 });
 
 
-function initializeGame() {
+/* ================= HELPERS ================= */
 
-    showScreen("homeScreen");
+function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(s =>
+        s.classList.remove("active")
+    );
 
+    const screen = document.getElementById(id);
+    if (screen) screen.classList.add("active");
+}
+
+function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+}
+
+function escapeHTML(value) {
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;");
 }
 
 
-/* =========================================================
-   SCREEN CONTROL
-   ========================================================= */
-
-function showScreen(screenId) {
-
-    const screens = document.querySelectorAll(".screen");
-
-    screens.forEach(screen => {
-
-        screen.classList.remove("active");
-
-    });
-
-
-    const target = document.getElementById(screenId);
-
-    if (target) {
-
-        target.classList.add("active");
-
-    }
-
-}
-
-
-/* =========================================================
-   PLAY BUTTON
-   ========================================================= */
+/* ================= HOME / SETUP ================= */
 
 function playGame() {
-
     showSetup();
-
 }
-
-
-/* =========================================================
-   SETUP
-   ========================================================= */
 
 function showSetup() {
-
     showScreen("setupScreen");
 
-
-    if (game.sides.length === 0) {
-
-        game.sides = [
-
-            createSide(),
-
-            createSide()
-
-        ];
-
+    if (!game.sides.length) {
+        game.sides = [createSide(), createSide()];
     }
 
-
     renderSides();
-
-    selectRounds(5);
-
+    selectRounds(game.rounds || 5);
 }
 
-
-/* =========================================================
-   CREATE SIDE
-   ========================================================= */
+function goHome() {
+    showScreen("homeScreen");
+}
 
 function createSide() {
-
-    sideId++;
-
     return {
-
-        id: sideId,
-
+        id: ++sideId,
         players: [""],
-
         teamName: "",
-
-        score: 0
-
+        score: 0,
+        roundPoints: 0
     };
-
 }
-
-
-/* =========================================================
-   ADD SIDE / TEAM
-   ========================================================= */
 
 function addSide() {
-
     game.sides.push(createSide());
-
     renderSides();
-
 }
-
-
-/* =========================================================
-   REMOVE SIDE
-   ========================================================= */
 
 function removeSide(index) {
-
     if (game.sides.length <= 2) {
-
         alert("You need at least 2 sides.");
-
         return;
-
     }
 
-
-    game.sides.splice(index, 1);
-
+    game.sides.splice(index,1);
     renderSides();
-
 }
-
-
-/* =========================================================
-   PLAYER COUNT
-   ========================================================= */
 
 function changePlayerCount(index, change) {
-
     const side = game.sides[index];
+    const count = Math.max(
+        1,
+        Math.min(10, side.players.length + change)
+    );
 
-    let count =
-        side.players.length + change;
-
-
-    count =
-        Math.max(
-            1,
-            Math.min(10, count)
-        );
-
-
-    while (side.players.length < count) {
-
+    while (side.players.length < count)
         side.players.push("");
 
-    }
-
-
-    while (side.players.length > count) {
-
+    while (side.players.length > count)
         side.players.pop();
 
-    }
-
-
-    /*
-       If it becomes a single-player side,
-       team name is no longer required.
-    */
-
-    if (count === 1) {
-
-        side.teamName = "";
-
-    }
-
+    if (count === 1) side.teamName = "";
 
     renderSides();
-
 }
 
-
-/* =========================================================
-   RENDER SIDES
-   ========================================================= */
-
 function renderSides() {
-
-    const container =
-        document.getElementById("sidesContainer");
-
-
+    const container = document.getElementById("sidesContainer");
     if (!container) return;
-
 
     container.innerHTML = "";
 
+    game.sides.forEach((side,index) => {
+        let players = side.players.map((p,pi) => `
+            <input
+                class="player-input"
+                type="text"
+                placeholder="Player ${pi+1} name"
+                value="${escapeHTML(p)}"
+                onchange="updatePlayer(${index},${pi},this.value)"
+            >
+        `).join("");
 
-    game.sides.forEach((side, index) => {
+        const team = side.players.length > 1 ? `
+            <div class="team-name-label">TEAM NAME</div>
+            <input
+                class="team-name-input"
+                type="text"
+                placeholder="Example: AS"
+                value="${escapeHTML(side.teamName)}"
+                onchange="updateTeamName(${index},this.value)"
+            >
+        ` : "";
 
-        const card =
-            document.createElement("div");
-
-
-        card.className =
-            "side-card";
-
-
-        let playerInputs = "";
-
-
-        side.players.forEach(
-            (player, playerIndex) => {
-
-                playerInputs += `
-
-                    <input
-                        class="player-input"
-                        type="text"
-                        placeholder="Player ${playerIndex + 1} name"
-                        value="${escapeHTML(player)}"
-                        onchange="updatePlayer(${index}, ${playerIndex}, this.value)"
-                    >
-
-                `;
-
-            }
-        );
-
-
-        let teamHTML = "";
-
-
-        /*
-           TEAM NAME APPEARS ONLY
-           WHEN THERE ARE 2 OR MORE PLAYERS.
-        */
-
-        if (side.players.length > 1) {
-
-            teamHTML = `
-
-                <div class="team-name-label">
-                    TEAM NAME
+        container.insertAdjacentHTML("beforeend",`
+            <div class="side-card">
+                <div class="side-header">
+                    <span class="side-number">SIDE ${index+1}</span>
+                    <button class="remove-side"
+                        onclick="removeSide(${index})">✕</button>
                 </div>
 
-                <input
-                    class="team-name-input"
-                    type="text"
-                    placeholder="Example: AS"
-                    value="${escapeHTML(side.teamName)}"
-                    onchange="updateTeamName(${index}, this.value)"
-                >
+                <div class="player-count">
+                    <button onclick="changePlayerCount(${index},-1)">−</button>
+                    <span>
+                        ${side.players.length}
+                        ${side.players.length === 1 ? "PLAYER":"PLAYERS"}
+                    </span>
+                    <button onclick="changePlayerCount(${index},1)">+</button>
+                </div>
 
-            `;
-
-        }
-
-
-        card.innerHTML = `
-
-            <div class="side-header">
-
-                <span class="side-number">
-                    SIDE ${index + 1}
-                </span>
-
-                <button
-                    class="remove-side"
-                    onclick="removeSide(${index})"
-                    aria-label="Remove side"
-                >
-                    ✕
-                </button>
-
+                ${team}
+                ${players}
             </div>
-
-
-            <div class="player-count">
-
-                <button
-                    type="button"
-                    onclick="changePlayerCount(${index}, -1)"
-                >
-                    −
-                </button>
-
-                <span>
-
-                    ${side.players.length}
-
-                    ${
-                        side.players.length === 1
-                        ? "PLAYER"
-                        : "PLAYERS"
-                    }
-
-                </span>
-
-                <button
-                    type="button"
-                    onclick="changePlayerCount(${index}, 1)"
-                >
-                    +
-                </button>
-
-            </div>
-
-
-            ${teamHTML}
-
-            ${playerInputs}
-
-        `;
-
-
-        container.appendChild(card);
-
+        `);
     });
 
+    setText("sideCount",`${game.sides.length} sides`);
+}
 
-    const sideCount =
-        document.getElementById("sideCount");
+function updatePlayer(side,player,value) {
+    game.sides[side].players[player] = value.trim();
+}
 
-
-    if (sideCount) {
-
-        sideCount.textContent =
-            `${game.sides.length} sides`;
-
-    }
-
+function updateTeamName(side,value) {
+    game.sides[side].teamName = value.trim();
 }
 
 
-/* =========================================================
-   UPDATE PLAYER
-   ========================================================= */
-
-function updatePlayer(
-    sideIndex,
-    playerIndex,
-    value
-) {
-
-    game.sides[sideIndex]
-        .players[playerIndex] =
-        value.trim();
-
-}
-
-
-/* =========================================================
-   UPDATE TEAM NAME
-   ========================================================= */
-
-function updateTeamName(
-    sideIndex,
-    value
-) {
-
-    game.sides[sideIndex]
-        .teamName =
-        value.trim();
-
-}
-
-
-/* =========================================================
-   ROUND SELECTION
-   ========================================================= */
+/* ================= ROUNDS ================= */
 
 function selectRounds(number) {
+    game.rounds = Math.max(1,Math.min(100,Number(number)));
 
-    number =
-        Math.max(
-            1,
-            Math.min(100, Number(number))
-        );
+    setText("roundDisplay",game.rounds);
 
+    document.querySelectorAll("[data-round]").forEach(btn =>
+        btn.classList.toggle(
+            "selected",
+            Number(btn.dataset.round) === game.rounds
+        )
+    );
 
-    game.rounds = number;
-
-
-    const display =
-        document.getElementById("roundDisplay");
-
-
-    if (display) {
-
-        display.textContent =
-            number;
-
-    }
-
-
-    document
-        .querySelectorAll("[data-round]")
-        .forEach(button => {
-
-            button.classList.toggle(
-                "selected",
-                Number(button.dataset.round) === number
-            );
-
-        });
-
-
-    const custom =
-        document.getElementById("customRounds");
-
-
-    if (custom) {
-
-        custom.value = "";
-
-    }
-
+    const custom = document.getElementById("customRounds");
+    if (custom) custom.value = "";
 }
-
-
-/* =========================================================
-   CUSTOM ROUND COUNT
-   ========================================================= */
 
 function setCustomRounds() {
+    const input = document.getElementById("customRounds");
+    if (!input || !input.value) return;
 
-    const input =
-        document.getElementById("customRounds");
-
-
-    if (!input) return;
-
-
-    const value =
-        Number(input.value);
-
-
-    if (!value || value < 1) {
-
-        return;
-
-    }
-
-
-    game.rounds =
-        Math.min(
-            100,
-            Math.floor(value)
-        );
-
-
-    const display =
-        document.getElementById("roundDisplay");
-
-
-    if (display) {
-
-        display.textContent =
-            game.rounds;
-
-    }
-
-
-    document
-        .querySelectorAll("[data-round]")
-        .forEach(button => {
-
-            button.classList.remove("selected");
-
-        });
-
+    selectRounds(Math.floor(Number(input.value)));
 }
-/* =========================================================
-   WAVELENGTH V2
-   SCRIPT.JS — PART 2 OF 4
-   CONTINUED
-   ========================================================= */
 
 
-/* =========================================================
-   START GAME
-   ========================================================= */
+/* ================= START GAME ================= */
 
 function startGame() {
-
     if (game.sides.length < 2) {
-
         alert("Add at least 2 sides.");
-
         return;
-
     }
 
-
-    /*
-       Validate every player.
-    */
-
-    for (let side of game.sides) {
-
-        for (let player of side.players) {
-
-            if (!player.trim()) {
-
-                alert(
-                    "Please enter every player name."
-                );
-
-                return;
-
-            }
-
-        }
-
-
-        /*
-           Team name is required only when
-           there are multiple players.
-        */
-
-        if (
-            side.players.length > 1 &&
-            !side.teamName.trim()
-        ) {
-
-            alert(
-                "A side with multiple players needs a team name."
-            );
-
+    for (const side of game.sides) {
+        if (side.players.some(p => !p.trim())) {
+            alert("Please enter every player name.");
             return;
-
         }
 
+        if (side.players.length > 1 && !side.teamName.trim()) {
+            alert("A side with multiple players needs a team name.");
+            return;
+        }
     }
-
-
-    /*
-       Reset game.
-    */
 
     game.currentRound = 1;
-
     game.currentSideIndex = 0;
-
     game.topicHistory = [];
-
     game.targetHistory = [];
 
-    game.topic = null;
-
-    game.topicIndex = -1;
-
-    game.sides.forEach(side => {
-
-        side.score = 0;
-
+    game.sides.forEach(s => {
+        s.score = 0;
+        s.roundPoints = 0;
     });
 
-
     startRound();
-
 }
 
 
-/* =========================================================
-   START ROUND
-   ========================================================= */
+/* ================= ROUND ================= */
 
 function startRound() {
-
-    game.revealed = false;
-
     game.roundFinished = false;
-
     game.guessAngle = 0;
 
+    chooseTopic();
+    chooseTarget();
 
-    chooseRandomTopic();
+    const side = game.sides[game.currentSideIndex];
 
-    chooseRandomTarget();
-
-
-    const side =
-        game.sides[
-            game.currentSideIndex
-        ];
-
-
-    updateTurnInformation(side);
-
-
+    updateTurn(side);
     showScreen("clueScreen");
 
-
-    setTimeout(() => {
-
-        drawClueCanvas();
-
-    }, 80);
-
+    setTimeout(drawClueCanvas,60);
 }
 
+function chooseTopic() {
+    let available = [];
 
-/* =========================================================
-   RANDOM TOPIC
-   ========================================================= */
-
-function chooseRandomTopic() {
-
-    /*
-       Use indexes instead of object references.
-       This prevents duplicate topics such as
-       Hot/Cold appearing incorrectly in history.
-    */
-
-    let availableIndexes = [];
-
-
-    for (
-        let i = 0;
-        i < allTopics.length;
-        i++
-    ) {
-
-        if (
-            !game.topicHistory.includes(i)
-        ) {
-
-            availableIndexes.push(i);
-
-        }
-
+    for (let i=0;i<topics.length;i++) {
+        if (!game.topicHistory.includes(i))
+            available.push(i);
     }
 
-
-    /*
-       Once every topic has been used,
-       start a fresh topic cycle.
-    */
-
-    if (availableIndexes.length === 0) {
-
+    if (!available.length) {
         game.topicHistory = [];
-
-        availableIndexes =
-            allTopics.map(
-                (_, index) => index
-            );
-
+        available = topics.map((_,i) => i);
     }
 
+    const index =
+        available[Math.floor(Math.random()*available.length)];
 
-    const randomPosition =
-        Math.floor(
-            Math.random() *
-            availableIndexes.length
-        );
-
-
-    const selectedIndex =
-        availableIndexes[randomPosition];
-
-
-    game.topicIndex =
-        selectedIndex;
-
-
-    game.topic =
-        allTopics[selectedIndex];
-
-
-    game.topicHistory.push(
-        selectedIndex
-    );
-
+    game.topicHistory.push(index);
+    game.topic = topics[index];
 }
 
-
-/* =========================================================
-   RANDOM TARGET
-   ========================================================= */
-
-function chooseRandomTarget() {
-
-    /*
-       Target is an angle between
-       -80° and +80°.
-
-       This keeps it comfortably inside
-       the semicircle.
-    */
-
+function chooseTarget() {
     let target;
 
+    if (game.targetHistory.length >= 160)
+        game.targetHistory = [];
 
     do {
-
-        target =
-            Math.floor(
-                Math.random() * 161
-            ) - 80;
-
-
-    } while (
-        game.targetHistory.includes(target)
-    );
-
+        target = Math.floor(Math.random()*161)-80;
+    } while (game.targetHistory.includes(target));
 
     game.targetHistory.push(target);
+    game.targetAngle = target;
+}
 
-    game.targetAngle =
-        target;
+function getSideName(side) {
+    return side.players.length === 1
+        ? side.players[0]
+        : side.teamName;
+}
 
+function updateTurn(side) {
+    const name = getSideName(side);
+
+    setText("clueTeamName",name);
+    setText("cluePlayers",side.players.join(" • "));
+    setText("guessTeamName",name);
+
+    setText("clueRound",game.currentRound);
+    setText("totalRounds",game.rounds);
+    setText("guessRound",game.currentRound);
+    setText("guessTotal",game.rounds);
+
+    const [left,right] = game.topic;
+
+    setText("topicText",`${left}  ↔  ${right}`);
+
+    ["leftTopic","guessLeftTopic","resultLeftTopic"]
+        .forEach(id => setText(id,left));
+
+    ["rightTopic","guessRightTopic","resultRightTopic"]
+        .forEach(id => setText(id,right));
 }
 
 
-/* =========================================================
-   TURN INFORMATION
-   ========================================================= */
+/* ================= CANVAS ================= */
 
-function updateTurnInformation(side) {
+function canvasInfo(canvas) {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
 
-    const displayName =
-        getSideDisplayName(side);
+    canvas.width = rect.width*dpr;
+    canvas.height = rect.width*.55*dpr;
 
-
-    /*
-       CLUE MASTER
-    */
-
-    setText(
-        "clueTeamName",
-        displayName
-    );
-
-
-    setText(
-        "cluePlayers",
-        side.players.join(" • ")
-    );
-
-
-    /*
-       GUESSER
-    */
-
-    setText(
-        "guessTeamName",
-        displayName
-    );
-
-
-    /*
-       ROUND NUMBERS
-    */
-
-    setText(
-        "clueRound",
-        game.currentRound
-    );
-
-
-    setText(
-        "totalRounds",
-        game.rounds
-    );
-
-
-    setText(
-        "guessRound",
-        game.currentRound
-    );
-
-
-    setText(
-        "guessTotal",
-        game.rounds
-    );
-
-
-    /*
-       TOPIC
-    */
-
-    const topicLeft =
-        game.topic[0];
-
-
-    const topicRight =
-        game.topic[1];
-
-
-    setText(
-        "topicText",
-        `${topicLeft}  ↔  ${topicRight}`
-    );
-
-
-    setText(
-        "leftTopic",
-        topicLeft
-    );
-
-
-    setText(
-        "rightTopic",
-        topicRight
-    );
-
-
-    setText(
-        "guessLeftTopic",
-        topicLeft
-    );
-
-
-    setText(
-        "guessRightTopic",
-        topicRight
-    );
-
-
-    setText(
-        "resultLeftTopic",
-        topicLeft
-    );
-
-
-    setText(
-        "resultRightTopic",
-        topicRight
-    );
-
-
-    /*
-       Role labels.
-
-       If your HTML has these IDs,
-       they will automatically update.
-    */
-
-    setText(
-        "clueRole",
-        "CLUE MASTER"
-    );
-
-
-    setText(
-        "guessRole",
-        "GUESSER"
-    );
-
-}
-
-
-/* =========================================================
-   SIDE DISPLAY NAME
-   ========================================================= */
-
-function getSideDisplayName(side) {
-
-    /*
-       ONE PLAYER:
-       Player's name is displayed.
-
-       MULTIPLE PLAYERS:
-       Team name is displayed.
-    */
-
-    if (
-        side.players.length === 1
-    ) {
-
-        return side.players[0];
-
-    }
-
-
-    return side.teamName;
-
-}
-
-
-/* =========================================================
-   TEXT HELPER
-   ========================================================= */
-
-function setText(id, value) {
-
-    const element =
-        document.getElementById(id);
-
-
-    if (element) {
-
-        element.textContent =
-            value;
-
-    }
-
-}
-
-
-/* =========================================================
-   HTML ESCAPE
-   ========================================================= */
-
-function escapeHTML(value) {
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   CANVAS SETUP
-   ========================================================= */
-
-function setupCanvas(canvas) {
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-
-    const dpr =
-        window.devicePixelRatio || 1;
-
-
-    const width =
-        rect.width;
-
-
-    const height =
-        width * 0.55;
-
-
-    canvas.width =
-        width * dpr;
-
-
-    canvas.height =
-        height * dpr;
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    /*
-       Reset transform first.
-       This prevents blurry / incorrectly
-       scaled drawings after redraws.
-    */
-
-    ctx.setTransform(
-        dpr,
-        0,
-        0,
-        dpr,
-        0,
-        0
-    );
-
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr,0,0,dpr,0,0);
 
     return {
-
         ctx,
-
-        width,
-
-        height
-
+        width:rect.width,
+        height:rect.width*.55
     };
-
 }
 
-
-/* =========================================================
-   ANGLE → POINT
-   ========================================================= */
-
-function angleToPoint(
-    cx,
-    cy,
-    radius,
-    angle
-) {
-
-    const radians =
-        (angle - 90) *
-        Math.PI / 180;
-
+function anglePoint(cx,cy,radius,angle) {
+    const rad = (angle-90)*Math.PI/180;
 
     return {
-
-        x:
-            cx +
-            radius *
-            Math.cos(radians),
-
-        y:
-            cy +
-            radius *
-            Math.sin(radians)
-
+        x:cx+radius*Math.cos(rad),
+        y:cy+radius*Math.sin(rad)
     };
-
 }
 
+function drawWave(canvas,target,needle,showTarget,showNeedle) {
+    const {ctx,width,height} = canvasInfo(canvas);
 
-/* =========================================================
-   NORMALIZE ANGLE
-   ========================================================= */
+    ctx.clearRect(0,0,width,height);
 
-function normalizeAngle(angle) {
+    const cx = width/2;
+    const cy = height-15;
+    const radius = Math.min(width*.46,height*1.55);
 
-    while (angle > 180) {
+    /* Base */
+    ctx.beginPath();
+    ctx.moveTo(cx-radius,cy);
+    ctx.arc(cx,cy,radius,Math.PI,Math.PI*2);
+    ctx.closePath();
+    ctx.fillStyle="#aab5c4";
+    ctx.fill();
 
-        angle -= 360;
-
-    }
-
-
-    while (angle < -180) {
-
-        angle += 360;
-
-    }
-
-
-    return angle;
-
-}
-
-
-/* =========================================================
-   WAVE DRAWING
-   ========================================================= */
-
-function drawWave(
-    canvas,
-    targetAngle,
-    needleAngle,
-    showTarget,
-    showNeedle
-) {
-
-    if (!canvas) return;
-
-
-    const {
-        ctx,
-        width,
-        height
-    } =
-        setupCanvas(canvas);
-
-
-    ctx.clearRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-
-    const cx =
-        width / 2;
-
-
-    const cy =
-        height - 15;
-
-
-    const radius =
-        Math.min(
-            width * 0.46,
-            height * 1.55
-        );
-
-
-    /*
-       Base semicircle.
-    */
-
-    drawBaseWave(
-        ctx,
-        cx,
-        cy,
-        radius
-    );
-
-
-    /*
-       Target zones.
-    */
-
+    /* Target */
     if (showTarget) {
-
-        drawTargetZones(
-            ctx,
-            cx,
-            cy,
-            radius,
-            targetAngle
-        );
-
+        drawBand(ctx,cx,cy,radius,target,4.5,"#39d98a");
+        drawBand(ctx,cx,cy,radius,target,13.5,"#ffd84d",4.5);
+        drawBand(ctx,cx,cy,radius,target,22.5,"#ff9f43",13.5);
+        drawBand(ctx,cx,cy,radius,target,31.5,"#ff5c65",22.5);
     }
 
-
-    /*
-       Guess needle.
-    */
-
+    /* Needle */
     if (showNeedle) {
+        const p = anglePoint(cx,cy,radius*.97,needle);
 
-        drawNeedle(
-            ctx,
-            cx,
-            cy,
-            radius,
-            needleAngle
-        );
+        ctx.beginPath();
+        ctx.moveTo(cx,cy);
+        ctx.lineTo(p.x,p.y);
+        ctx.lineWidth=7;
+        ctx.lineCap="round";
+        ctx.strokeStyle="#ff3f52";
+        ctx.stroke();
 
+        ctx.beginPath();
+        ctx.arc(cx,cy,8,0,Math.PI*2);
+        ctx.fillStyle="#ff3f52";
+        ctx.fill();
     }
 
-
-    /*
-       Center hub.
-    */
-
-    drawCenterHub(
-        ctx,
-        cx,
-        cy
-    );
-
+    ctx.beginPath();
+    ctx.arc(cx,cy,6,0,Math.PI*2);
+    ctx.fillStyle="#ff5864";
+    ctx.fill();
 }
 
-
-/* =========================================================
-   BASE WAVE
-   ========================================================= */
-
-function drawBaseWave(
-    ctx,
-    cx,
-    cy,
-    radius
-) {
+function drawBand(ctx,cx,cy,radius,target,outer,color,inner=0) {
+    const half=outer;
+    const a=(target-half-90)*Math.PI/180;
+    const b=(target+half-90)*Math.PI/180;
 
     ctx.beginPath();
-
-
-    ctx.moveTo(
-        cx - radius,
-        cy
-    );
-
-
-    ctx.arc(
-        cx,
-        cy,
-        radius,
-        Math.PI,
-        2 * Math.PI
-    );
-
-
+    ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,radius,a,b);
     ctx.closePath();
 
-
-    ctx.fillStyle =
-        "#AAB5C4";
-
-
+    ctx.fillStyle=color;
     ctx.fill();
-
-
 }
-
-
-/* =========================================================
-   TARGET ZONES
-   ========================================================= */
-
-function drawTargetZones(
-    ctx,
-    cx,
-    cy,
-    radius,
-    targetAngle
-) {
-
-    /*
-       Wavelength scoring:
-
-       GREEN  = 4
-       YELLOW = 3
-       ORANGE = 2
-       RED    = 1
-
-       Each zone is symmetrical
-       around the target centre.
-
-       Green:
-       ±4.5°
-
-       Yellow:
-       4.5° → 13.5°
-
-       Orange:
-       13.5° → 22.5°
-
-       Red:
-       22.5° → 31.5°
-    */
-
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        targetAngle,
-        0,
-        2.5,
-        "#39D98A"
-    );
-
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        targetAngle,
-        2.5,
-        7.5,
-        "#FFD34E"
-    );
-
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        targetAngle,
-        7.5,
-        12.5,
-        "#FF9F43"
-    );
-
-
-    drawAngleBand(
-        ctx,
-        cx,
-        cy,
-        radius,
-        targetAngle,
-        12.5,
-        17.5,
-        "#FF5B63"
-    );
-
-}
-
-
-/* =========================================================
-   ANGLE BAND
-   ========================================================= */
-
-function drawAngleBand(
-    ctx,
-    cx,
-    cy,
-    radius,
-    centerAngle,
-    innerAngle,
-    outerAngle,
-    color
-) {
-
-    const leftOuter =
-        centerAngle -
-        outerAngle;
-
-
-    const rightOuter =
-        centerAngle +
-        outerAngle;
-
-
-    const leftInner =
-        centerAngle -
-        innerAngle;
-
-
-    const rightInner =
-        centerAngle +
-        innerAngle;
-
-
-    /*
-       Draw left half.
-    */
-
-    drawWedge(
-        ctx,
-        cx,
-        cy,
-        radius,
-        leftOuter,
-        leftInner,
-        color
-    );
-
-
-    /*
-       Draw right half.
-    */
-
-    drawWedge(
-        ctx,
-        cx,
-        cy,
-        radius,
-        rightInner,
-        rightOuter,
-        color
-    );
-
-}
-
-
-/* =========================================================
-   WEDGE
-   ========================================================= */
-
-function drawWedge(
-    ctx,
-    cx,
-    cy,
-    radius,
-    startAngle,
-    endAngle,
-    color
-) {
-
-    const startRadians =
-        (startAngle - 90) *
-        Math.PI / 180;
-
-
-    const endRadians =
-        (endAngle - 90) *
-        Math.PI / 180;
-
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(
-        cx,
-        cy
-    );
-
-
-    ctx.arc(
-        cx,
-        cy,
-        radius,
-        startRadians,
-        endRadians
-    );
-
-
-    ctx.closePath();
-
-
-    ctx.fillStyle =
-        color;
-
-
-    ctx.fill();
-
-}
-/* =========================================================
-   WAVELENGTH V2
-   SCRIPT.JS — PART 3 OF 4
-   CONTINUED
-   ========================================================= */
-
-
-/* =========================================================
-   DRAW NEEDLE
-   ========================================================= */
-
-function drawNeedle(
-    ctx,
-    cx,
-    cy,
-    radius,
-    angle
-) {
-
-    /*
-       This is the actual guessing needle.
-       It is NOT a 🎯 symbol.
-    */
-
-    const tip =
-        angleToPoint(
-            cx,
-            cy,
-            radius * 0.96,
-            angle
-        );
-
-
-    /*
-       Main needle line.
-    */
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(
-        cx,
-        cy
-    );
-
-
-    ctx.lineTo(
-        tip.x,
-        tip.y
-    );
-
-
-    ctx.lineWidth =
-        7;
-
-
-    ctx.lineCap =
-        "round";
-
-
-    ctx.strokeStyle =
-        "#FF3F52";
-
-
-    ctx.stroke();
-
-
-    /*
-       Needle tip.
-    */
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-        tip.x,
-        tip.y,
-        5,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-        "#FF3F52";
-
-
-    ctx.fill();
-
-}
-
-
-/* =========================================================
-   CENTER HUB
-   ========================================================= */
-
-function drawCenterHub(
-    ctx,
-    cx,
-    cy
-) {
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-        cx,
-        cy,
-        9,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-        "#FF3F52";
-
-
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-        cx,
-        cy,
-        3,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-        "#FFFFFF";
-
-
-    ctx.fill();
-
-}
-
-
-/* =========================================================
-   CLUE PHASE
-   ========================================================= */
 
 function drawClueCanvas() {
-
-    const canvas =
-        document.getElementById(
-            "waveCanvas"
-        );
-
-
-    if (!canvas) return;
-
-
-    /*
-       Clue Master can see:
-       - topic
-       - target
-       - scoring zones
-
-       No guessing needle yet.
-    */
-
     drawWave(
-        canvas,
+        document.getElementById("waveCanvas"),
         game.targetAngle,
         0,
         true,
         false
     );
-
 }
 
 
-/* =========================================================
-   HIDE TARGET
-   ========================================================= */
+/* ================= HIDE TARGET ================= */
 
 function hideTarget() {
+    showScreen("guessScreen");
 
-    /*
-       Move to guessing screen.
-    */
-
-    game.revealed =
-        false;
-
-
-    game.guessAngle =
-        0;
-
-
-    showScreen(
-        "guessScreen"
-    );
-
+    game.guessAngle=0;
 
     setTimeout(() => {
-
         drawGuessCanvas();
-
         enableNeedleDragging();
-
-    }, 80);
-
+    },60);
 }
 
-
-/* =========================================================
-   DRAW GUESS CANVAS
-   ========================================================= */
-
 function drawGuessCanvas() {
-
-    const canvas =
-        document.getElementById(
-            "guessCanvas"
-        );
-
-
-    if (!canvas) return;
-
-
-    /*
-       Target is completely hidden.
-       Only the grey semicircle and needle
-       are visible.
-    */
-
     drawWave(
-        canvas,
+        document.getElementById("guessCanvas"),
         game.targetAngle,
         game.guessAngle,
         false,
         true
     );
-
 }
 
 
-/* =========================================================
-   ENABLE NEEDLE DRAGGING
-   ========================================================= */
+/* ================= NEEDLE ================= */
 
 function enableNeedleDragging() {
+    const canvas=document.getElementById("guessCanvas");
 
-    const canvas =
-        document.getElementById(
-            "guessCanvas"
-        );
+    canvas.onpointerdown=e=>{
+        draggingNeedle=true;
+        canvas.setPointerCapture(e.pointerId);
+        moveNeedle(e);
+    };
 
+    canvas.onpointermove=e=>{
+        if(draggingNeedle) moveNeedle(e);
+    };
 
-    if (!canvas) return;
+    canvas.onpointerup=()=>{
+        draggingNeedle=false;
+    };
 
-
-    /*
-       Remove previous listeners by
-       assigning fresh handlers.
-    */
-
-    canvas.onpointerdown =
-        function (event) {
-
-            if (game.roundFinished) {
-
-                return;
-
-            }
-
-
-            draggingNeedle =
-                true;
-
-
-            try {
-
-                canvas.setPointerCapture(
-                    event.pointerId
-                );
-
-            } catch (error) {
-
-                /* Ignore */
-
-            }
-
-
-            updateNeedleFromPointer(
-                event
-            );
-
-        };
-
-
-    canvas.onpointermove =
-        function (event) {
-
-            if (!draggingNeedle) {
-
-                return;
-
-            }
-
-
-            updateNeedleFromPointer(
-                event
-            );
-
-        };
-
-
-    canvas.onpointerup =
-        function () {
-
-            draggingNeedle =
-                false;
-
-        };
-
-
-    canvas.onpointercancel =
-        function () {
-
-            draggingNeedle =
-                false;
-
-        };
-
-
-    canvas.onpointerleave =
-        function () {
-
-            /*
-               Do NOT stop dragging here.
-               On mobile, pointer capture handles it.
-            */
-
-        };
-
+    canvas.onpointercancel=()=>{
+        draggingNeedle=false;
+    };
 }
 
+function moveNeedle(e) {
+    const canvas=document.getElementById("guessCanvas");
+    const rect=canvas.getBoundingClientRect();
 
-/* =========================================================
-   UPDATE NEEDLE FROM POINTER
-   ========================================================= */
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    const cx=rect.width/2;
+    const cy=rect.height-15;
 
-function updateNeedleFromPointer(event) {
+    let angle=
+        Math.atan2(x-cx,-(y-cy))*180/Math.PI;
 
-    const canvas =
-        document.getElementById(
-            "guessCanvas"
-        );
+    angle=Math.max(-89,Math.min(89,angle));
 
-
-    if (!canvas) return;
-
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-
-    const x =
-        event.clientX -
-        rect.left;
-
-
-    const y =
-        event.clientY -
-        rect.top;
-
-
-    const cx =
-        rect.width / 2;
-
-
-    const cy =
-        rect.height - 15;
-
-
-    /*
-       Calculate angle from center.
-    */
-
-    let angle =
-        Math.atan2(
-            x - cx,
-            -(y - cy)
-        ) *
-        180 /
-        Math.PI;
-
-
-    /*
-       Keep needle inside
-       the semicircle.
-    */
-
-    angle =
-        Math.max(
-            -89,
-            Math.min(
-                89,
-                angle
-            )
-        );
-
-
-    game.guessAngle =
-        angle;
-
-
+    game.guessAngle=angle;
     drawGuessCanvas();
-
 }
 
 
-/* =========================================================
-   REVEAL TARGET
-   ========================================================= */
-
-function revealTarget() {
-
-    if (game.roundFinished) {
-
-        return;
-
-    }
-
-
-    game.roundFinished =
-        true;
-
-
-    draggingNeedle =
-        false;
-
-
-    /*
-       Calculate score.
-    */
-
-    const points =
-        calculatePoints(
-            game.targetAngle,
-            game.guessAngle
-        );
-
-
-    const side =
-        game.sides[
-            game.currentSideIndex
-        ];
-
-
-    side.score +=
-        points;
-
-
-    /*
-       Store result information.
-    */
-
-    setText(
-        "resultTeam",
-        getSideDisplayName(side)
-    );
-
-
-    setText(
-        "pointsEarned",
-        points
-    );
-
-
-    /*
-       Result message.
-    */
-
-    let message;
-
-
-    if (points === 4) {
-
-        message =
-            "🎯 PERFECT HIT!";
-
-    }
-
-    else if (points === 3) {
-
-        message =
-            "🔥 AMAZING GUESS!";
-
-    }
-
-    else if (points === 2) {
-
-        message =
-            "👍 NICE GUESS!";
-
-    }
-
-    else if (points === 1) {
-
-        message =
-            "😅 JUST INSIDE!";
-
-    }
-
-    else {
-
-        message =
-            "💀 OUTSIDE THE TARGET!";
-
-    }
-
-
-    setText(
-        "resultMessage",
-        message
-    );
-
-
-    /*
-       Show score board if
-       the HTML contains one.
-    */
-
-    renderScores(
-        "resultScores"
-    );
-
-
-    showScreen(
-        "resultScreen"
-    );
-
-
-    setTimeout(() => {
-
-        drawResultCanvas();
-
-    }, 80);
-
-}
-
-
-/* =========================================================
-   CALCULATE POINTS
-   ========================================================= */
-
-function calculatePoints(
-    target,
-    guess
-) {
-
-    const distance =
-        Math.abs(
-            normalizeAngle(
-                target - guess
-            )
-        );
-
-
-    /*
-       4 POINTS
-       Green
-       ±4.5°
-    */
-
-    if (distance <= 2.5) {
-
-        return 4;
-
-    }
-
-
-    /*
-       3 POINTS
-       Yellow
-    */
-
-    if (distance <= 7.5) {
-
-        return 3;
-
-    }
-
-
-    /*
-       2 POINTS
-       Orange
-    */
-
-    if (distance <= 12.5) {
-
-        return 2;
-
-    }
-
-
-    /*
-       1 POINT
-       Red
-    */
-
-    if (distance <= 17.5) {
-
-        return 1;
-
-    }
-
-
-    /*
-       Outside target.
-    */
+/* ================= SCORING ================= */
+
+function calculatePoints(target,guess) {
+    const distance=Math.abs(target-guess);
+
+    if(distance<=4.5) return 4;
+    if(distance<=13.5) return 3;
+    if(distance<=22.5) return 2;
+    if(distance<=31.5) return 1;
 
     return 0;
-
 }
 
 
-/* =========================================================
-   DRAW RESULT CANVAS
-   ========================================================= */
+/* ================= REVEAL ================= */
+
+function revealTarget() {
+    if(game.roundFinished) return;
+
+    game.roundFinished=true;
+
+    const side=game.sides[game.currentSideIndex];
+    const points=calculatePoints(
+        game.targetAngle,
+        game.guessAngle
+    );
+
+    side.roundPoints=points;
+    side.score+=points;
+
+    setText("resultTeam",getSideName(side));
+    setText("pointsEarned",points);
+
+    const messages={
+        4:"🎯 PERFECT HIT!",
+        3:"🔥 Amazing guess!",
+        2:"👍 Nice one!",
+        1:"😅 Just inside!",
+        0:"💀 Outside the target!"
+    };
+
+    setText("resultMessage",messages[points]);
+
+    showRoundScoreboard();
+
+    showScreen("resultScreen");
+
+    setTimeout(drawResultCanvas,60);
+}
+
+
+/* ================= ROUND SCOREBOARD ================= */
+
+function showRoundScoreboard() {
+    let box=document.getElementById("roundScoreboard");
+
+    if(!box) {
+        box=document.createElement("div");
+        box.id="roundScoreboard";
+        box.className="final-scores";
+
+        const breakdown=document.querySelector(".score-breakdown");
+
+        if(breakdown)
+            breakdown.parentNode.insertBefore(box,breakdown);
+    }
+
+    const sorted=[...game.sides].sort(
+        (a,b)=>b.score-a.score
+    );
+
+    box.innerHTML=`
+        <h3>📊 SCOREBOARD</h3>
+        ${sorted.map((side,index)=>`
+            <div class="final-score-row">
+                <span>
+                    ${index===0 && side.score>0 ? "🏆 ":""}
+                    ${escapeHTML(getSideName(side))}
+                </span>
+                <span>
+                    <b>+${side.roundPoints}</b>
+                    &nbsp; ${side.score} pts
+                </span>
+            </div>
+        `).join("")}
+    `;
+}
+
+
+/* ================= RESULT CANVAS ================= */
 
 function drawResultCanvas() {
-
-    const canvas =
-        document.getElementById(
-            "resultCanvas"
-        );
-
-
-    if (!canvas) return;
-
-
-    /*
-       Result screen shows:
-       - target
-       - all scoring zones
-       - player's needle
-    */
-
     drawWave(
-        canvas,
+        document.getElementById("resultCanvas"),
         game.targetAngle,
         game.guessAngle,
         true,
         true
     );
-
 }
 
 
-/* =========================================================
-   SKIP QUESTION
-   ========================================================= */
+/* ================= SKIP ================= */
 
-function skipQuestion() {
+function skipRound() {
+    if(game.roundFinished) return;
 
-    if (game.roundFinished) {
+    game.roundFinished=true;
 
-        return;
+    const side=game.sides[game.currentSideIndex];
 
-    }
+    side.roundPoints=0;
 
+    setText("resultTeam",getSideName(side));
+    setText("pointsEarned",0);
+    setText("resultMessage","⏭️ Question skipped!");
 
-    /*
-       Skip means:
-       - no points
-       - no repeated target
-       - move directly to next round
-    */
+    showRoundScoreboard();
+    showScreen("resultScreen");
 
-    game.roundFinished =
-        true;
-
-
-    const side =
-        game.sides[
-            game.currentSideIndex
-        ];
-
-
-    setText(
-        "resultTeam",
-        getSideDisplayName(side)
-    );
-
-
-    setText(
-        "pointsEarned",
-        "0"
-    );
-
-
-    setText(
-        "resultMessage",
-        "⏭️ QUESTION SKIPPED"
-    );
-
-
-    renderScores(
-        "resultScores"
-    );
-
-
-    showScreen(
-        "resultScreen"
-    );
-
-
-    setTimeout(() => {
-
-        drawResultCanvas();
-
-    }, 80);
-
+    setTimeout(drawResultCanvas,60);
 }
 
 
-/* =========================================================
-   NEXT ROUND
-   ========================================================= */
+/* ================= NEXT ROUND ================= */
 
 function nextRound() {
-
-    /*
-       If all rounds are completed,
-       show final winner.
-    */
-
-    if (
-        game.currentRound >=
-        game.rounds
-    ) {
-
+    if(game.currentRound>=game.rounds) {
         showGameOver();
-
         return;
-
     }
-
 
     game.currentRound++;
 
-
-    /*
-       Automatically rotate sides.
-
-       Example:
-
-       Side 1
-       Side 2
-       Side 3
-       Side 4
-       Side 1
-       ...
-
-       No manual selection.
-    */
-
-    game.currentSideIndex =
-        (
-            game.currentSideIndex + 1
-        ) %
-        game.sides.length;
-
+    game.currentSideIndex=
+        (game.currentSideIndex+1)%game.sides.length;
 
     startRound();
-
 }
 
 
-/* =========================================================
-   SCOREBOARD
-   ========================================================= */
-
-function renderScores(
-    containerId
-) {
-
-    const container =
-        document.getElementById(
-            containerId
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    container.innerHTML = "";
-
-
-    /*
-       Sort only for display.
-       Actual side order is not changed.
-    */
-
-    const sorted =
-        [...game.sides].sort(
-            (a, b) =>
-                b.score - a.score
-        );
-
-
-    sorted.forEach(
-        (side, index) => {
-
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-
-            row.className =
-                "score-row";
-
-
-            row.innerHTML = `
-
-                <span class="score-rank">
-                    ${index + 1}
-                </span>
-
-                <span class="score-name">
-                    ${escapeHTML(
-                        getSideDisplayName(side)
-                    )}
-                </span>
-
-                <span class="score-points">
-                    ${side.score}
-                </span>
-
-            `;
-
-
-            container.appendChild(
-                row
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   RENDER MAIN SCOREBOARD
-   ========================================================= */
-
-function renderMainScores() {
-
-    renderScores(
-        "gameScores"
-    );
-
-
-    renderScores(
-        "resultScores"
-    );
-
-}
-
-
-/* =========================================================
-   GET WINNERS
-   ========================================================= */
-
-function getWinners() {
-
-    const highestScore =
-        Math.max(
-            ...game.sides.map(
-                side => side.score
-            )
-        );
-
-
-    return game.sides.filter(
-        side =>
-            side.score ===
-            highestScore
-    );
-
-}
-
-
-/* =========================================================
-   GET WINNER TEXT
-   ========================================================= */
-
-function getWinnerText() {
-
-    const winners =
-        getWinners();
-
-
-    if (winners.length === 1) {
-
-        return getSideDisplayName(
-            winners[0]
-        );
-
-    }
-
-
-    return winners
-        .map(
-            winner =>
-                getSideDisplayName(winner)
-        )
-        .join(" & ");
-
-}
-/* =========================================================
-   WAVELENGTH V2
-   SCRIPT.JS — PART 4 OF 4
-   CONTINUED / FINAL
-   ========================================================= */
-
-
-/* =========================================================
-   GAME OVER
-   ========================================================= */
+/* ================= GAME OVER ================= */
 
 function showGameOver() {
-
-    const winners =
-        getWinners();
-
-
-    const winnerText =
-        getWinnerText();
-
-
-    /*
-       Main winner text.
-    */
-
-    setText(
-        "winnerName",
-        winnerText
+    const sorted=[...game.sides].sort(
+        (a,b)=>b.score-a.score
     );
 
+    const winner=sorted[0];
 
-    setText(
-        "gameWinner",
-        winnerText
-    );
+    setText("winnerName",getSideName(winner));
+    setText("winnerScore",winner.score);
 
+    const list=document.getElementById("finalScoreList");
 
-    setText(
-        "finalWinner",
-        winnerText
-    );
-
-
-    /*
-       Winner score.
-    */
-
-    if (winners.length === 1) {
-
-        setText(
-            "winnerScore",
-            winners[0].score
-        );
-
+    if(list) {
+        list.innerHTML=sorted.map((side,index)=>`
+            <div class="final-score-row"
+                 style="${index===0 ? "border:3px solid #ffd84d;":""}">
+                <span>
+                    ${index===0 ? "👑 ":""}
+                    ${escapeHTML(getSideName(side))}
+                </span>
+                <span>${side.score} ⭐</span>
+            </div>
+        `).join("");
     }
 
-    else {
-
-        setText(
-            "winnerScore",
-            winners[0].score
-        );
-
-    }
-
-
-    /*
-       Total rounds.
-    */
-
-    setText(
-        "gameOverRounds",
-        game.rounds
-    );
-
-
-    /*
-       Render final scoreboard.
-    */
-
-    renderScores(
-        "finalScores"
-    );
-
-
-    renderScores(
-        "gameOverScores"
-    );
-
-
-    showScreen(
-        "gameOverScreen"
-    );
-
+    showScreen("gameOverScreen");
 }
 
 
-/* =========================================================
-   RESTART SAME GAME
-   ========================================================= */
+/* ================= PLAY AGAIN ================= */
 
-function playAgain() {
-
+function restartGame() {
     /*
-       Keep teams and player names,
-       but reset scores and round number.
+       Keep the existing sides and names,
+       but completely reset scores and rounds.
+       This lets PLAY AGAIN work immediately.
     */
 
-    game.currentRound =
-        1;
+    game.currentRound=1;
+    game.currentSideIndex=0;
+    game.topicHistory=[];
+    game.targetHistory=[];
+    game.targetAngle=0;
+    game.guessAngle=0;
+    game.roundFinished=false;
 
-
-    game.currentSideIndex =
-        0;
-
-
-    game.topicHistory =
-        [];
-
-
-    game.targetHistory =
-        [];
-
-
-    game.topic =
-        null;
-
-
-    game.topicIndex =
-        -1;
-
-
-    game.guessAngle =
-        0;
-
-
-    game.revealed =
-        false;
-
-
-    game.roundFinished =
-        false;
-
-
-    game.sides.forEach(
-        side => {
-
-            side.score =
-                0;
-
-        }
-    );
-
-
-    startRound();
-
-}
-
-
-/* =========================================================
-   NEW GAME
-   ========================================================= */
-
-function newGame() {
-
-    game = {
-
-        rounds: 5,
-
-        currentRound: 1,
-
-        sides: [],
-
-        currentSideIndex: 0,
-
-        targetAngle: 0,
-
-        guessAngle: 0,
-
-        topic: null,
-
-        topicIndex: -1,
-
-        topicHistory: [],
-
-        targetHistory: [],
-
-        revealed: false,
-
-        roundFinished: false
-
-    };
-
-
-    sideId = 0;
-
-    draggingNeedle =
-        false;
-
+    game.sides.forEach(side=>{
+        side.score=0;
+        side.roundPoints=0;
+    });
 
     showSetup();
-
 }
 
 
-/* =========================================================
-   HOME
-   ========================================================= */
+/* ================= RESIZE ================= */
 
-function goHome() {
+window.addEventListener("resize",()=>{
+    const active=document.querySelector(".screen.active");
 
-    /*
-       Do not destroy current game.
-       This simply takes the user back
-       to the title screen.
-    */
+    if(!active) return;
 
-    showScreen(
-        "homeScreen"
-    );
+    if(active.id==="clueScreen")
+        drawClueCanvas();
 
-}
+    if(active.id==="guessScreen")
+        drawGuessCanvas();
 
-
-/* =========================================================
-   BACK TO SETUP
-   ========================================================= */
-
-function backToSetup() {
-
-    showScreen(
-        "setupScreen"
-    );
-
-
-    renderSides();
-
-}
-
-
-/* =========================================================
-   WINDOW RESIZE
-   ========================================================= */
-
-window.addEventListener(
-    "resize",
-    function () {
-
-        /*
-           Redraw the currently visible
-           canvas after screen rotation
-           or browser resize.
-        */
-
-        const clueScreen =
-            document.getElementById(
-                "clueScreen"
-            );
-
-
-        const guessScreen =
-            document.getElementById(
-                "guessScreen"
-            );
-
-
-        const resultScreen =
-            document.getElementById(
-                "resultScreen"
-            );
-
-
-        if (
-            clueScreen &&
-            clueScreen.classList.contains(
-                "active"
-            )
-        ) {
-
-            setTimeout(
-                drawClueCanvas,
-                50
-            );
-
-        }
-
-
-        if (
-            guessScreen &&
-            guessScreen.classList.contains(
-                "active"
-            )
-        ) {
-
-            setTimeout(
-                drawGuessCanvas,
-                50
-            );
-
-        }
-
-
-        if (
-            resultScreen &&
-            resultScreen.classList.contains(
-                "active"
-            )
-        ) {
-
-            setTimeout(
-                drawResultCanvas,
-                50
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PREVENT ACCIDENTAL FORM SUBMISSION
-   ========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function (event) {
-
-        /*
-           Enter inside a player/team input
-           should not accidentally submit/start
-           the entire game.
-        */
-
-        if (
-            event.key === "Enter" &&
-            event.target.matches(
-                "input"
-            )
-        ) {
-
-            event.preventDefault();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PREVENT PAGE SCROLL WHILE DRAGGING
-   ========================================================= */
-
-document.addEventListener(
-    "touchmove",
-    function (event) {
-
-        if (
-            draggingNeedle &&
-            event.target.closest(
-                "#guessCanvas"
-            )
-        ) {
-
-            event.preventDefault();
-
-        }
-
-    },
-    {
-        passive: false
-    }
-);
-
-
-/* =========================================================
-   DEBUG / SAFETY HELPER
-   ========================================================= */
-
-function getCurrentSide() {
-
-    return game.sides[
-        game.currentSideIndex
-    ];
-
-}
-
-
-/* =========================================================
-   OPTIONAL: MANUAL SCORE VIEW
-   ========================================================= */
-
-function showScores() {
-
-    renderMainScores();
-
-
-    const scoreScreen =
-        document.getElementById(
-            "scoreScreen"
-        );
-
-
-    if (scoreScreen) {
-
-        showScreen(
-            "scoreScreen"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   OPTIONAL: CLOSE SCORE VIEW
-   ========================================================= */
-
-function closeScores() {
-
-    /*
-       Return to whichever phase
-       is currently appropriate.
-    */
-
-    if (
-        game.roundFinished
-    ) {
-
-        showScreen(
-            "resultScreen"
-        );
-
-        return;
-
-    }
-
-
-    if (
-        draggingNeedle
-    ) {
-
-        showScreen(
-            "guessScreen"
-        );
-
-        return;
-
-    }
-
-
-    showScreen(
-        "clueScreen"
-    );
-
-}
-
-
-/* =========================================================
-   FINAL INITIALIZATION
-   ========================================================= */
-
-(function finalInitialization() {
-
-    /*
-       If the HTML loads this script before
-       DOMContentLoaded, wait for it.
-
-       If it has already loaded, setup will
-       still work through the event listener
-       at the top of this file.
-    */
-
-    if (
-        document.readyState ===
-        "interactive" ||
-        document.readyState ===
-        "complete"
-    ) {
-
-        /*
-           Nothing else is required here.
-        */
-
-    }
-
-})();
+    if(active.id==="resultScreen")
+        drawResultCanvas();
+});
