@@ -1,362 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WAVELENGTH</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WAVELENGTH</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 <div id="app">
 
-    <!-- ================= HOME ================= -->
-    <section id="homeScreen" class="screen active">
+<!-- HOME -->
+<section id="homeScreen" class="screen active">
+    <div class="logo-wrap">
+        <div class="logo-icon">〰️</div>
+        <h1>WAVELENGTH</h1>
+        <p>Think it. Clue it. Guess it.</p>
+    </div>
 
-        <div class="logo-wrap">
-            <div class="logo-icon">〰️</div>
-            <h1>WAVELENGTH</h1>
-            <p>Think it. Clue it. Guess it.</p>
+    <button class="main-btn play-btn" onclick="showSetup()">▶ PLAY</button>
+
+    <div class="home-decoration">
+        <span>🟢</span><span>🟡</span><span>🟠</span><span>🔴</span>
+    </div>
+</section>
+
+
+<!-- SETUP -->
+<section id="setupScreen" class="screen">
+
+    <div class="top-title">
+        <button class="back-btn" onclick="goHome()">←</button>
+        <div>
+            <h2>GAME SETUP</h2>
+            <p>Get your sides ready!</p>
+        </div>
+    </div>
+
+    <div class="setup-card">
+        <h3>🏆 NUMBER OF ROUNDS</h3>
+
+        <div class="round-options">
+            <button onclick="selectRounds(5)" data-round="5">5</button>
+            <button onclick="selectRounds(10)" data-round="10">10</button>
+            <button onclick="selectRounds(15)" data-round="15">15</button>
+            <button onclick="selectRounds(20)" data-round="20">20</button>
         </div>
 
-        <button class="main-btn play-btn" onclick="showSetup()">
-            ▶ PLAY
-        </button>
-
-        <div class="home-decoration">
-            <span>🟢</span>
-            <span>🟡</span>
-            <span>🟠</span>
-            <span>🔴</span>
+        <div class="custom-round">
+            <input type="number" id="customRounds" min="1" max="100"
+                   placeholder="Custom" onchange="setCustomRounds()">
         </div>
 
-    </section>
+        <div class="selected-round">
+            Rounds: <strong id="roundDisplay">5</strong>
+        </div>
+    </div>
 
 
-    <!-- ================= SETUP ================= -->
-    <section id="setupScreen" class="screen">
+    <div class="setup-card">
 
-        <div class="top-title">
-            <button class="back-btn" onclick="goHome()">←</button>
+        <div class="section-heading">
             <div>
-                <h2>GAME SETUP</h2>
-                <p>Get your sides ready!</p>
+                <h3>👥 CREATE TEAMS</h3>
+                <p>Maximum 2 players per team.</p>
+            </div>
+            <span id="sideCount">2 teams</span>
+        </div>
+
+        <div id="sidesContainer"></div>
+
+        <button class="add-side-btn" onclick="addSide()">
+            ＋ ADD TEAM
+        </button>
+    </div>
+
+    <button class="main-btn start-btn" onclick="startGame()">
+        🚀 START GAME
+    </button>
+
+</section>
+
+
+<!-- CLUE MASTER -->
+<section id="clueScreen" class="screen game-screen">
+
+    <div class="game-header">
+        <div class="role-badge clue-badge">🔮 CLUE MASTER</div>
+        <div class="round-info">
+            ROUND <span id="clueRound"></span>/<span id="totalRounds"></span>
+        </div>
+    </div>
+
+    <div class="turn-card">
+        <div class="turn-label">CLUE MASTER</div>
+        <h2 id="clueTeamName"></h2>
+        <div id="cluePlayers" class="players-small"></div>
+    </div>
+
+    <div class="instruction-card">
+        <span class="instruction-icon">💡</span>
+        <div>
+            <strong>Think of a clue.</strong>
+            <p>Look at the target and give a word or phrase to help the guessers.</p>
+        </div>
+    </div>
+
+    <div class="wave-container">
+        <div class="scale-label left-label" id="leftTopic"></div>
+        <div class="scale-label right-label" id="rightTopic"></div>
+        <canvas id="waveCanvas"></canvas>
+    </div>
+
+    <div class="topic-card">
+        <span>🎲 TOPIC</span>
+        <h2 id="topicText"></h2>
+        <p>Give your clue based on this scale.</p>
+    </div>
+
+    <button class="action-btn hide-btn" onclick="hideTarget()">
+        🙈 HIDE FOR GUESSERS
+    </button>
+
+    <button class="skip-btn" onclick="skipTopic()">
+        ⏭️ SKIP TOPIC
+    </button>
+
+</section>
+
+
+<!-- GUESSERS -->
+<section id="guessScreen" class="screen game-screen">
+
+    <div class="game-header">
+        <div class="role-badge guess-badge">🧠 GUESSERS</div>
+        <div class="round-info">
+            ROUND <span id="guessRound"></span>/<span id="guessTotal"></span>
+        </div>
+    </div>
+
+    <div class="turn-card">
+        <div class="turn-label">NOW GUESSING</div>
+        <h2 id="guessTeamName"></h2>
+        <div id="guessInfo" class="players-small"></div>
+    </div>
+
+    <div class="guess-instruction">
+        <strong>Where do you think the target is?</strong>
+        <p>Each player has their own needle.</p>
+    </div>
+
+    <div id="guessersContainer" class="guessers-container"></div>
+
+    <button class="action-btn reveal-btn" onclick="revealTarget()">
+        🎯 REVEAL TARGET
+    </button>
+
+</section>
+
+
+<!-- RESULT -->
+<section id="resultScreen" class="screen game-screen">
+
+    <div class="game-header">
+        <div class="role-badge result-badge">🏆 POINTS AWARDED</div>
+    </div>
+
+    <div class="result-title">
+        <h1 id="resultTeam"></h1>
+        <p id="resultMessage"></p>
+    </div>
+
+    <div class="wave-container result-wave">
+        <div class="scale-label left-label" id="resultLeftTopic"></div>
+        <div class="scale-label right-label" id="resultRightTopic"></div>
+        <canvas id="resultCanvas"></canvas>
+    </div>
+
+    <div id="resultPlayerScores" class="result-player-scores"></div>
+
+    <div class="score-breakdown">
+        <div class="score-box green"><span>🟢</span><strong>4</strong><small>GREEN</small></div>
+        <div class="score-box yellow"><span>🟡</span><strong>3</strong><small>YELLOW</small></div>
+        <div class="score-box orange"><span>🟠</span><strong>2</strong><small>ORANGE</small></div>
+        <div class="score-box red"><span>🔴</span><strong>1</strong><small>RED</small></div>
+        <div class="score-box outside"><span>⚫</span><strong>0</strong><small>OUTSIDE</small></div>
+    </div>
+
+    <button class="action-btn next-btn" onclick="nextRound()">
+        NEXT ROUND →
+    </button>
+
+</section>
+
+
+<!-- GAME OVER -->
+<section id="gameOverScreen" class="screen">
+
+    <div class="game-over-content">
+
+        <div class="trophy">🏆</div>
+        <p class="game-over-small">GAME OVER</p>
+        <h1>WINNER</h1>
+
+        <div class="winner-card">
+            <div class="winner-crown">👑</div>
+            <h2 id="winnerName"></h2>
+            <div class="winner-score">
+                ⭐ <span id="winnerScore"></span>
             </div>
         </div>
 
-        <!-- ROUNDS -->
-        <div class="setup-card">
-
-            <h3>🏆 NUMBER OF ROUNDS</h3>
-
-            <div class="round-options">
-                <button onclick="selectRounds(5)" data-round="5">5</button>
-                <button onclick="selectRounds(10)" data-round="10">10</button>
-                <button onclick="selectRounds(15)" data-round="15">15</button>
-                <button onclick="selectRounds(20)" data-round="20">20</button>
-            </div>
-
-            <div class="custom-round">
-                <input
-                    type="number"
-                    id="customRounds"
-                    min="1"
-                    max="100"
-                    placeholder="Custom"
-                    onchange="setCustomRounds()"
-                >
-            </div>
-
-            <div class="selected-round">
-                Rounds: <strong id="roundDisplay">5</strong>
-            </div>
-
+        <div class="final-scores">
+            <h3>FINAL SCORES</h3>
+            <div id="finalScoreList"></div>
         </div>
 
-
-        <!-- SIDES -->
-        <div class="setup-card">
-
-            <div class="section-heading">
-                <div>
-                    <h3>👥 CREATE SIDES</h3>
-                    <p>Solo or team — your choice.</p>
-                </div>
-
-                <span id="sideCount">2 sides</span>
-            </div>
-
-            <div id="sidesContainer"></div>
-
-            <button class="add-side-btn" onclick="addSide()">
-                ＋ ADD SIDE
-            </button>
-
-        </div>
-
-
-        <button class="main-btn start-btn" onclick="startGame()">
-            🚀 START GAME
+        <button class="main-btn" onclick="playAgain()">
+            🔄 PLAY AGAIN
         </button>
 
-    </section>
-
-
-    <!-- ================= CLUE MASTER ================= -->
-    <section id="clueScreen" class="screen game-screen">
-
-        <div class="game-header">
-
-            <div class="role-badge clue-badge">
-                🔮 CLUE MASTER
-            </div>
-
-            <div class="round-info">
-                ROUND <span id="clueRound"></span>/<span id="totalRounds"></span>
-            </div>
-
-        </div>
-
-
-        <div class="turn-card">
-
-            <div class="turn-label">IT'S YOUR TURN</div>
-
-            <h2 id="clueTeamName"></h2>
-
-            <div id="cluePlayers" class="players-small"></div>
-
-        </div>
-
-
-        <div class="instruction-card">
-            <span class="instruction-icon">💡</span>
-
-            <div>
-                <strong>Think of a clue.</strong>
-                <p>
-                    Look at the target and think of a word or phrase
-                    that helps your team guess its position.
-                </p>
-            </div>
-        </div>
-
-
-        <!-- WAVELENGTH -->
-        <div class="wave-container">
-
-            <div class="scale-label left-label" id="leftTopic"></div>
-            <div class="scale-label right-label" id="rightTopic"></div>
-
-            <canvas id="waveCanvas"></canvas>
-
-        </div>
-
-
-        <div class="topic-card">
-
-            <span>🎲 TOPIC</span>
-
-            <h2 id="topicText"></h2>
-
-            <p>
-                Give your clue based on this scale.
-            </p>
-
-        </div>
-
-
-        <button class="action-btn hide-btn" onclick="hideTarget()">
-            🙈 HIDE FOR GUESSERS
+        <button class="secondary-btn" onclick="goHome()">
+            HOME
         </button>
 
-        <button class="skip-btn" onclick="skipRound()">
-            Skip Question
-        </button>
+    </div>
 
-    </section>
-
-
-    <!-- ================= GUESS ================= -->
-    <section id="guessScreen" class="screen game-screen">
-
-        <div class="game-header">
-
-            <div class="role-badge guess-badge">
-                🧠 GUESS CAPTAIN
-            </div>
-
-            <div class="round-info">
-                ROUND <span id="guessRound"></span>/<span id="guessTotal"></span>
-            </div>
-
-        </div>
-
-
-        <div class="turn-card">
-
-            <div class="turn-label">NOW GUESSING</div>
-
-            <h2 id="guessTeamName"></h2>
-
-        </div>
-
-
-        <div class="guess-instruction">
-            <strong>Where do you think the target is?</strong>
-            <p>Drag the red needle to your answer.</p>
-        </div>
-
-
-        <!-- GUESSING WAVE -->
-        <div class="wave-container guess-wave">
-
-            <div class="scale-label left-label" id="guessLeftTopic"></div>
-            <div class="scale-label right-label" id="guessRightTopic"></div>
-
-            <canvas id="guessCanvas"></canvas>
-
-        </div>
-
-
-        <div class="needle-help">
-            ↔️ Drag the needle
-        </div>
-
-
-        <button class="action-btn reveal-btn" onclick="revealTarget()">
-            🎯 REVEAL TARGET
-        </button>
-
-    </section>
-
-
-    <!-- ================= RESULT ================= -->
-    <section id="resultScreen" class="screen game-screen">
-
-        <div class="game-header">
-
-            <div class="role-badge result-badge">
-                🏆 POINTS AWARDED
-            </div>
-
-        </div>
-
-
-        <div class="result-title">
-
-            <h1 id="resultTeam"></h1>
-
-            <div class="points-earned">
-                +<span id="pointsEarned">0</span>
-            </div>
-
-            <p id="resultMessage"></p>
-
-        </div>
-
-
-        <div class="wave-container result-wave">
-
-            <div class="scale-label left-label" id="resultLeftTopic"></div>
-            <div class="scale-label right-label" id="resultRightTopic"></div>
-
-            <canvas id="resultCanvas"></canvas>
-
-        </div>
-
-
-        <div class="score-breakdown">
-
-            <div class="score-box green">
-                <span>🟢</span>
-                <strong>4</strong>
-                <small>GREEN</small>
-            </div>
-
-            <div class="score-box yellow">
-                <span>🟡</span>
-                <strong>3</strong>
-                <small>YELLOW</small>
-            </div>
-
-            <div class="score-box orange">
-                <span>🟠</span>
-                <strong>2</strong>
-                <small>ORANGE</small>
-            </div>
-
-            <div class="score-box red">
-                <span>🔴</span>
-                <strong>1</strong>
-                <small>RED</small>
-            </div>
-
-            <div class="score-box outside">
-                <span>⚫</span>
-                <strong>0</strong>
-                <small>OUTSIDE</small>
-            </div>
-
-        </div>
-
-
-        <button class="action-btn next-btn" onclick="nextRound()">
-            NEXT ROUND →
-        </button>
-
-    </section>
-
-
-    <!-- ================= GAME OVER ================= -->
-    <section id="gameOverScreen" class="screen">
-
-        <div class="game-over-content">
-
-            <div class="trophy">🏆</div>
-
-            <p class="game-over-small">GAME OVER</p>
-
-            <h1>WINNER</h1>
-
-            <div class="winner-card">
-
-                <div class="winner-crown">👑</div>
-
-                <h2 id="winnerName"></h2>
-
-                <div class="winner-score">
-                    ⭐ <span id="winnerScore"></span>
-                </div>
-
-            </div>
-
-
-            <div class="final-scores">
-
-                <h3>FINAL SCORES</h3>
-
-                <div id="finalScoreList"></div>
-
-            </div>
-
-
-            <button class="main-btn" onclick="restartGame()">
-                🔄 PLAY AGAIN
-            </button>
-
-            <button class="secondary-btn" onclick="goHome()">
-                HOME
-            </button>
-
-        </div>
-
-    </section>
+</section>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
